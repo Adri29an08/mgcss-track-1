@@ -1,1 +1,27 @@
+name: CI Pipeline
 
+on:
+  push:
+    branches: [ "main", "feature/initial-structure" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v3
+
+      - name: Configurar Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Build (compilar)
+        run: mvn clean compile
+
+      - name: Test (ejecutar tests)
+        run: mvn test

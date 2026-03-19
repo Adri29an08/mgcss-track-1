@@ -1,5 +1,7 @@
 # mgcss-track-1 (mgcss-track)
 
+![CI Pipeline](https://github.com/Adri29an08/mgcss-track-1/actions/workflows/ci.yml/badge.svg)
+
 Proyecto **Spring Boot** usando **Java 17** y **Maven**.
 
 ---

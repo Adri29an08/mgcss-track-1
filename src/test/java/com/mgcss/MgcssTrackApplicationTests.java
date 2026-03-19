@@ -8,6 +8,7 @@ class MgcssTrackApplicationTests {
 
     @Test
     void contextLoads() {
+		throw new RuntimeException("Test fallando a propósito");
     }
 
 }

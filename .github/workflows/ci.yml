@@ -25,3 +25,11 @@ jobs:
 
       - name: Test (ejecutar tests)
         run: mvn test
+
+      - name: Build and analyze
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn clean verify sonar:sonar \
+          -Dsonar.projectKey=Adri29an08_mgcss-track-1 \
+          -Dsonar.organization=adrijaifer \ 
+          -Dsonar.host.url=https://sonarcloud.io

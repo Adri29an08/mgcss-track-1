@@ -2,7 +2,7 @@ name: CI Pipeline
 
 on:
   push:
-    branches: [ "main", "feature/initial-structure" ]
+    branches: [ "main", "feature/initial-structure", "feature/sonar_cloud" ]
   pull_request:
     branches: [ "main" ]
 
@@ -25,3 +25,8 @@ jobs:
 
       - name: Test (ejecutar tests)
         run: mvn test
+
+      - name: Build and analyze
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Adri29an08_mgcss-track-1

@@ -1,10 +1,12 @@
 package com.mgcss.domain;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import com.mgcss.domain.*;
 import com.mgcss.service.*;
+import java.util.Optional;
 
 class SolicitudServiceTest {
 
@@ -29,5 +31,24 @@ class SolicitudServiceTest {
         // 3. ASSERT/VERIFY: ¿Se llamó al save? 
         verify(repoSol).save(s);
         assertEquals(t, s.getTecnico());
+    }
+
+    @Test
+    void debeLanzarExcepcionSiLaSolicitudNoExiste() {
+        // Arrange
+        SolicitudRepository repoS = mock(SolicitudRepository.class);
+        TecnicoRepository repoT = mock(TecnicoRepository.class);
+        SolicitudService service = new SolicitudService(repoS, repoT);
+
+        // Simular que el repositorio devuelve vacío [cite: 64, 332]
+        when(repoS.findById(1L)).thenReturn(Optional.empty());
+
+        // Act & Assert
+        assertThrows(IllegalArgumentException.class, () -> {
+            service.asignarTecnico(1L, 10L);
+        });
+        
+        // Verificar que NUNCA se intentó guardar nada si falló antes [cite: 305, 336]
+        verify(repoS, never()).save(any());
     }
 }

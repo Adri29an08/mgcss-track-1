@@ -2,6 +2,9 @@ package com.mgcss.domain;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class Solicitud {
 
     private Long id;

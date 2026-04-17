@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.mgcss.domain.SolicitudTest" time="0.083" tests="5" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.mgcss.domain.TecnicoTest" time="0.085" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -58,9 +58,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="67.0"/>
   </properties>
-  <testcase name="no_debe_permitir_cerrar_si_no_esta_en_proceso" classname="com.mgcss.domain.SolicitudTest" time="0.009"/>
-  <testcase name="no_debe_permitir_descripcion_demasiado_corta" classname="com.mgcss.domain.SolicitudTest" time="0.006"/>
-  <testcase name="no_debe_asignar_tecnico_inactivo" classname="com.mgcss.domain.SolicitudTest" time="0.012"/>
-  <testcase name="debe_permitir_cerrar_si_esta_en_proceso" classname="com.mgcss.domain.SolicitudTest" time="0.005"/>
-  <testcase name="no_debe_iniciar_trabajo_sin_tecnico" classname="com.mgcss.domain.SolicitudTest" time="0.012"/>
+  <testcase name="debe_permitir_cambiar_de_estado_manualmente" classname="com.mgcss.domain.TecnicoTest" time="0.015"/>
+  <testcase name="debe_crearse_con_el_estado_correcto" classname="com.mgcss.domain.TecnicoTest" time="0.013"/>
+  <testcase name="debe_guardar_los_datos_basicos" classname="com.mgcss.domain.TecnicoTest" time="0.032"/>
 </testsuite>

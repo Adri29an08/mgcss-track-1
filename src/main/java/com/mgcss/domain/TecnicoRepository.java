@@ -1,9 +1,7 @@
 package com.mgcss.domain;
 
-import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface TecnicoRepository {
+public interface TecnicoRepository extends JpaRepository<Tecnico, Long> {
 
-    Optional<Tecnico> findById(Long id);
-    Tecnico save(Tecnico tecnico);
 }

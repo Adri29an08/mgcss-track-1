@@ -1,10 +1,25 @@
 package com.mgcss.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Tecnico {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nombre;
+    
+    @Enumerated(EnumType.STRING)
     private EstadoTecnico estado;
+
+    protected Tecnico() {} // Para JPA
 
     // Constructor para tests y creación rápida
     public Tecnico(EstadoTecnico estado) {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.mgcss.MgcssTrackApplicationTests" time="2.314" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.mgcss.domain.SolicitudRepositoryTest" time="5.736" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -48,7 +48,6 @@
     <property name="localRepository" value="C:\Users\jaime\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
     <property name="java.io.tmpdir" value="C:\Users\jaime\AppData\Local\Temp\"/>
-    <property name="com.zaxxer.hikari.pool_number" value="1"/>
     <property name="java.version" value="21.0.4"/>
     <property name="user.dir" value="C:\Users\jaime\OneDrive\4º (segundo cuatri)\Mantenimiento\mgcss-track\mgcss-track-1"/>
     <property name="os.arch" value="amd64"/>
@@ -66,10 +65,10 @@
     <property name="java.class.version" value="65.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[mgcss-track] "/>
   </properties>
-  <testcase name="contextLoads" classname="com.mgcss.MgcssTrackApplicationTests" time="0.009">
-    <system-out><![CDATA[2026-04-24T10:55:39.419+02:00  INFO 12056 --- [mgcss-track] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.mgcss.MgcssTrackApplicationTests]: MgcssTrackApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-04-24T10:55:39.432+02:00  INFO 12056 --- [mgcss-track] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.mgcss.MgcssTrackApplication for test class com.mgcss.MgcssTrackApplicationTests
-2026-04-24T10:55:39.459+02:00  INFO 12056 --- [mgcss-track] [           main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+  <testcase name="debeGuardarYRecuperarSolicitud" classname="com.mgcss.domain.SolicitudRepositoryTest" time="0.637">
+    <system-out><![CDATA[10:55:33.352 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.mgcss.domain.SolicitudRepositoryTest]: SolicitudRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+10:55:33.593 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.mgcss.MgcssTrackApplication for test class com.mgcss.domain.SolicitudRepositoryTest
+10:55:33.745 [main] INFO org.springframework.boot.devtools.restart.RestartApplicationListener -- Restart disabled due to context in which it is running
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -80,30 +79,39 @@
 
  :: Spring Boot ::               (v3.5.11)
 
-2026-04-24T10:55:39.515+02:00  INFO 12056 --- [mgcss-track] [           main] com.mgcss.MgcssTrackApplicationTests     : Starting MgcssTrackApplicationTests using Java 21.0.4 with PID 12056 (started by jaime in C:\Users\jaime\OneDrive\4º (segundo cuatri)\Mantenimiento\mgcss-track\mgcss-track-1)
-2026-04-24T10:55:39.515+02:00  INFO 12056 --- [mgcss-track] [           main] com.mgcss.MgcssTrackApplicationTests     : No active profile set, falling back to 1 default profile: "default"
-2026-04-24T10:55:40.258+02:00  INFO 12056 --- [mgcss-track] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-04-24T10:55:40.277+02:00  INFO 12056 --- [mgcss-track] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 3 JPA repository interfaces.
-2026-04-24T10:55:40.555+02:00  INFO 12056 --- [mgcss-track] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-04-24T10:55:40.578+02:00  INFO 12056 --- [mgcss-track] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn6: url=jdbc:h2:mem:d8d6b434-5484-42c1-bd66-866e683e4efc user=SA
-2026-04-24T10:55:40.581+02:00  INFO 12056 --- [mgcss-track] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-04-24T10:55:40.597+02:00  INFO 12056 --- [mgcss-track] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-04-24T10:55:40.599+02:00  INFO 12056 --- [mgcss-track] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-04-24T10:55:40.609+02:00  INFO 12056 --- [mgcss-track] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-04-24T10:55:40.611+02:00  INFO 12056 --- [mgcss-track] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+2026-04-24T10:55:34.339+02:00  INFO 12056 --- [mgcss-track] [           main] c.mgcss.domain.SolicitudRepositoryTest   : Starting SolicitudRepositoryTest using Java 21.0.4 with PID 12056 (started by jaime in C:\Users\jaime\OneDrive\4º (segundo cuatri)\Mantenimiento\mgcss-track\mgcss-track-1)
+2026-04-24T10:55:34.342+02:00  INFO 12056 --- [mgcss-track] [           main] c.mgcss.domain.SolicitudRepositoryTest   : No active profile set, falling back to 1 default profile: "default"
+2026-04-24T10:55:34.817+02:00  INFO 12056 --- [mgcss-track] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-24T10:55:34.906+02:00  INFO 12056 --- [mgcss-track] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 74 ms. Found 3 JPA repository interfaces.
+2026-04-24T10:55:34.995+02:00  INFO 12056 --- [mgcss-track] [           main] beddedDataSourceBeanFactoryPostProcessor : Replacing 'dataSource' DataSource bean with embedded version
+2026-04-24T10:55:35.134+02:00  INFO 12056 --- [mgcss-track] [           main] o.s.j.d.e.EmbeddedDatabaseFactory        : Starting embedded database: url='jdbc:h2:mem:f96e1d2e-4343-44fd-be65-1bb7072ee301;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2026-04-24T10:55:35.660+02:00  INFO 12056 --- [mgcss-track] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-24T10:55:35.747+02:00  INFO 12056 --- [mgcss-track] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.42.Final
+2026-04-24T10:55:35.800+02:00  INFO 12056 --- [mgcss-track] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-04-24T10:55:36.256+02:00  INFO 12056 --- [mgcss-track] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-24T10:55:36.391+02:00  INFO 12056 --- [mgcss-track] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory$EmbeddedDataSourceProxy@355c2b72']
 	Database driver: undefined/unknown
 	Database version: 2.3.232
 	Autocommit mode: undefined/unknown
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-04-24T10:55:40.651+02:00  INFO 12056 --- [mgcss-track] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-04-24T10:55:40.661+02:00  INFO 12056 --- [mgcss-track] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-04-24T10:55:40.981+02:00  WARN 12056 --- [mgcss-track] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-04-24T10:55:41.697+02:00  INFO 12056 --- [mgcss-track] [           main] com.mgcss.MgcssTrackApplicationTests     : Started MgcssTrackApplicationTests in 2.238 seconds (process running for 9.723)
-2026-04-24T10:55:41.699+02:00  WARN 12056 --- [mgcss-track] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
-2026-04-24T10:55:41.699+02:00  WARN 12056 --- [mgcss-track] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-04-24T10:55:37.705+02:00  INFO 12056 --- [mgcss-track] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: drop table if exists solicitud cascade 
+Hibernate: drop table if exists tecnico cascade 
+Hibernate: create table solicitud (fecha_creacion timestamp(6), id bigint generated by default as identity, tecnico_id bigint, descripcion varchar(255), estado enum ('ABIERTA','CERRADA','EN_PROCESO','PRUEBA'), primary key (id))
+Hibernate: create table tecnico (id bigint generated by default as identity, nombre varchar(255), estado enum ('ACTIVO','INACTIVO'), primary key (id))
+Hibernate: alter table if exists solicitud add constraint FKrq78f2uc9ewd0cuw6twvgr0mb foreign key (tecnico_id) references tecnico
+2026-04-24T10:55:37.793+02:00  INFO 12056 --- [mgcss-track] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-24T10:55:38.139+02:00  INFO 12056 --- [mgcss-track] [           main] c.mgcss.domain.SolicitudRepositoryTest   : Started SolicitudRepositoryTest in 4.419 seconds (process running for 6.164)
+Hibernate: insert into solicitud (descripcion,estado,fecha_creacion,tecnico_id,id) values (?,?,?,?,default)
 ]]></system-out>
+    <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (C:\Users\jaime\.m2\repository\net\bytebuddy\byte-buddy-agent\1.17.8\byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
   </testcase>
 </testsuite>

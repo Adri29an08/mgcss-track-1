@@ -1,8 +1,6 @@
 package com.mgcss.domain;
-import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface SolicitudRepository {
+public interface SolicitudRepository extends JpaRepository<Solicitud, Long> {
     
-    Solicitud save(Solicitud solicitud);
-    Optional<Solicitud> findById(Long id);
 }

@@ -2,13 +2,13 @@ package com.mgcss.domain;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -18,13 +18,16 @@ public class Solicitud {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+     @ManyToOne
+    @JoinColumn(name = "tecnico_id")
+    private Tecnico tecnico; // Necesario para la Regla de Asignación
+    
+    private String descripcion; // Necesario para la Regla de Integridad
+
     @Enumerated(EnumType.STRING)
     private EstadoSolicitud estado;
     private LocalDateTime fechaCreacion;
-    
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Tecnico tecnico; // Necesario para la Regla de Asignación
-    private String descripcion; // Necesario para la Regla de Integridad
+
 
     protected Solicitud() {}
 

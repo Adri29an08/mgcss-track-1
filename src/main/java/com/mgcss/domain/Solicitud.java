@@ -2,13 +2,35 @@ package com.mgcss.domain;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
+// hemos unificado ambas capas para simplificar el diseño en esta fase
+@Entity
 public class Solicitud {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+     @ManyToOne
+    @JoinColumn(name = "tecnico_id")
+    private Tecnico tecnico; // Necesario para la Regla de Asignación
+    
+    private String descripcion; // Necesario para la Regla de Integridad
+
+    @Enumerated(EnumType.STRING)
     private EstadoSolicitud estado;
     private LocalDateTime fechaCreacion;
-    private Tecnico tecnico; // Necesario para la Regla de Asignación
-    private String descripcion; // Necesario para la Regla de Integridad
+
+
+    protected Solicitud() {}
 
     public Solicitud(String descripcion) {
         validarDescripcion(descripcion); // Regla 4: Integridad

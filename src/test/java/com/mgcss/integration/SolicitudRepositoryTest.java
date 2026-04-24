@@ -1,12 +1,17 @@
-package com.mgcss.domain;
+package com.mgcss.integration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import com.mgcss.domain.Solicitud;
+import com.mgcss.domain.SolicitudRepository;
+
 @DataJpaTest // Levanta solo JPA y la base de datos H2
+@Tag("integration")
 class SolicitudRepositoryTest {
 
     @Autowired

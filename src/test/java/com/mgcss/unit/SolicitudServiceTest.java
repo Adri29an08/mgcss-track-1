@@ -1,13 +1,25 @@
-package com.mgcss.domain;
+package com.mgcss.unit;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
-import com.mgcss.domain.*;
-import com.mgcss.service.*;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import com.mgcss.domain.EstadoTecnico;
+import com.mgcss.domain.Solicitud;
+import com.mgcss.domain.SolicitudRepository;
+import com.mgcss.domain.Tecnico;
+import com.mgcss.domain.TecnicoRepository;
+import com.mgcss.service.SolicitudService;
+
+@Tag("unit")
 class SolicitudServiceTest {
 
 

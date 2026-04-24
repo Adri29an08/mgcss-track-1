@@ -1,10 +1,15 @@
-package com.mgcss.domain;
+package com.mgcss.unit;
 
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+import com.mgcss.domain.EstadoTecnico;
+import com.mgcss.domain.Tecnico;
+
+@Tag("unit")
 class TecnicoTest {
 
     @Test

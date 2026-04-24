@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
+// hemos unificado ambas capas para simplificar el diseño en esta fase
 @Entity
 public class Solicitud {
 

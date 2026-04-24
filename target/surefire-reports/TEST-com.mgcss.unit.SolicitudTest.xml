@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.mgcss.MgcssTrackApplicationTests" time="1.924" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.mgcss.unit.SolicitudTest" time="0.024" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -66,44 +66,9 @@
     <property name="java.class.version" value="65.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[mgcss-track] "/>
   </properties>
-  <testcase name="contextLoads" classname="com.mgcss.MgcssTrackApplicationTests" time="0.011">
-    <system-out><![CDATA[2026-04-24T12:34:38.837+02:00  INFO 15492 --- [mgcss-track] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.mgcss.MgcssTrackApplicationTests]: MgcssTrackApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-04-24T12:34:38.860+02:00  INFO 15492 --- [mgcss-track] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.mgcss.MgcssTrackApplication for test class com.mgcss.MgcssTrackApplicationTests
-2026-04-24T12:34:38.893+02:00  INFO 15492 --- [mgcss-track] [           main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::               (v3.5.11)
-
-2026-04-24T12:34:38.926+02:00  INFO 15492 --- [mgcss-track] [           main] com.mgcss.MgcssTrackApplicationTests     : Starting MgcssTrackApplicationTests using Java 21.0.4 with PID 15492 (started by jaime in C:\Users\jaime\OneDrive\4º (segundo cuatri)\Mantenimiento\mgcss-track\mgcss-track-1)
-2026-04-24T12:34:38.926+02:00  INFO 15492 --- [mgcss-track] [           main] com.mgcss.MgcssTrackApplicationTests     : No active profile set, falling back to 1 default profile: "default"
-2026-04-24T12:34:39.484+02:00  INFO 15492 --- [mgcss-track] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-04-24T12:34:39.498+02:00  INFO 15492 --- [mgcss-track] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 3 JPA repository interfaces.
-2026-04-24T12:34:39.711+02:00  INFO 15492 --- [mgcss-track] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-04-24T12:34:39.730+02:00  INFO 15492 --- [mgcss-track] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn6: url=jdbc:h2:mem:2047f3d0-0c06-46fc-8a02-24581d97bdda user=SA
-2026-04-24T12:34:39.742+02:00  INFO 15492 --- [mgcss-track] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-04-24T12:34:39.757+02:00  INFO 15492 --- [mgcss-track] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-04-24T12:34:39.757+02:00  INFO 15492 --- [mgcss-track] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-04-24T12:34:39.764+02:00  INFO 15492 --- [mgcss-track] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-04-24T12:34:39.764+02:00  INFO 15492 --- [mgcss-track] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
-	Database driver: undefined/unknown
-	Database version: 2.3.232
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2026-04-24T12:34:39.803+02:00  INFO 15492 --- [mgcss-track] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-04-24T12:34:39.809+02:00  INFO 15492 --- [mgcss-track] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-04-24T12:34:40.054+02:00  WARN 15492 --- [mgcss-track] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-04-24T12:34:40.718+02:00  INFO 15492 --- [mgcss-track] [           main] com.mgcss.MgcssTrackApplicationTests     : Started MgcssTrackApplicationTests in 1.827 seconds (process running for 10.737)
-2026-04-24T12:34:40.718+02:00  WARN 15492 --- [mgcss-track] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
-2026-04-24T12:34:40.729+02:00  WARN 15492 --- [mgcss-track] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
-]]></system-out>
-  </testcase>
+  <testcase name="no_debe_permitir_cerrar_si_no_esta_en_proceso" classname="com.mgcss.unit.SolicitudTest" time="0.005"/>
+  <testcase name="no_debe_permitir_descripcion_demasiado_corta" classname="com.mgcss.unit.SolicitudTest" time="0.004"/>
+  <testcase name="no_debe_asignar_tecnico_inactivo" classname="com.mgcss.unit.SolicitudTest" time="0.004"/>
+  <testcase name="debe_permitir_cerrar_si_esta_en_proceso" classname="com.mgcss.unit.SolicitudTest" time="0.002"/>
+  <testcase name="no_debe_iniciar_trabajo_sin_tecnico" classname="com.mgcss.unit.SolicitudTest" time="0.003"/>
 </testsuite>

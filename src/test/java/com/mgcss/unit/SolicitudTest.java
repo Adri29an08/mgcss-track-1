@@ -16,7 +16,7 @@ class SolicitudTest {
     void no_debe_permitir_cerrar_si_no_esta_en_proceso() {
         Solicitud s = new Solicitud("Reparación de switch principal");
         // Está ABIERTA, debe fallar al intentar cerrar
-        assertThrows(IllegalStateException.class, () -> s.cerrar());
+        assertThrows(IllegalStateException.class, s::cerrar);
     }
 
     @Test
@@ -40,7 +40,7 @@ class SolicitudTest {
     void no_debe_iniciar_trabajo_sin_tecnico() {
         Solicitud s = new Solicitud("Configuración de VLAN interna");
         // Falla porque técnico es null 
-        assertThrows(IllegalStateException.class, () -> s.iniciarTrabajo());
+        assertThrows(IllegalStateException.class, s::iniciarTrabajo);
     }
 
     @Test

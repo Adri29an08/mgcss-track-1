@@ -1,7 +1,12 @@
 package com.mgcss.domain;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -29,20 +34,30 @@ public class Solicitud {
 
     private LocalDateTime fechaCreacion;
 
+    @ElementCollection
+    @CollectionTable(name = "solicitud_historial", joinColumns = @JoinColumn(name = "solicitud_id"))
+    @Column(name = "estado_cambio")
+    private List<String> historial = new ArrayList<>();
+
     protected Solicitud() {}
 
     public Solicitud(String descripcion) {
         validarDescripcion(descripcion);
         this.descripcion = descripcion;
-        this.estado = EstadoSolicitud.ABIERTA;
+        registrarCambioEstado(EstadoSolicitud.ABIERTA);
         this.fechaCreacion = LocalDateTime.now();
     }
 
-    // --- MÉTODOS DE NEGOCIO REFACTORIZADOS ---
-
     public void cerrar() {
         validarEstadoParaCierre();
-        this.estado = EstadoSolicitud.CERRADA;
+        registrarCambioEstado(EstadoSolicitud.CERRADA);
+    }
+
+    public void reabrir() {
+        if (this.estado != EstadoSolicitud.CERRADA) {
+            throw new IllegalStateException("Solo se pueden reabrir solicitudes CERRADAS");
+        }
+        registrarCambioEstado(EstadoSolicitud.EN_PROCESO);
     }
 
     public void asignarTecnico(Tecnico t) {
@@ -54,25 +69,17 @@ public class Solicitud {
     public void iniciarTrabajo() {
         asegurarQueSePuedeModificar();
         validarAsignacionPrevia();
-        this.estado = EstadoSolicitud.EN_PROCESO;
+        registrarCambioEstado(EstadoSolicitud.EN_PROCESO);
     }
 
-    // --- PASO 4: REFACTORIZACIÓN (EXTRACT METHOD) ---
-    // Hemos extraído cada 'if' a un método privado para bajar la complejidad [cite: 74, 78]
+    private void registrarCambioEstado(EstadoSolicitud nuevoEstado) {
+        this.estado = nuevoEstado;
+        this.historial.add("Estado cambiado a " + nuevoEstado + " el " + LocalDateTime.now());
+    }
 
+    // --- MÉTODOS DE VALIDACIÓN (Sesión 8) ---
     private void validarDescripcion(String desc) {
-        validarPresencia(desc);
-        validarLongitudMinima(desc);
-    }
-
-    private void validarPresencia(String desc) {
-        if (desc == null || desc.trim().isEmpty()) {
-            throw new IllegalArgumentException("La descripción es obligatoria");
-        }
-    }
-
-    private void validarLongitudMinima(String desc) {
-        if (desc.trim().length() < 10) {
+        if (desc == null || desc.trim().length() < 10) {
             throw new IllegalArgumentException("Descripción obligatoria (mínimo 10 carac.)");
         }
     }
@@ -101,11 +108,13 @@ public class Solicitud {
         }
     }
 
-    // Getters y Setters necesarios para persistencia y Sonar
+    // --- GETTERS (CRÍTICOS PARA LOS TESTS) ---
     public Long getId() { return id; }
-    public EstadoSolicitud getEstado() { return estado; }
-    public LocalDateTime getFechaCreacion() { return fechaCreacion; }
     public String getDescripcion() { return descripcion; }
+    public EstadoSolicitud getEstado() { return estado; }
     public Tecnico getTecnico() { return tecnico; }
+    public LocalDateTime getFechaCreacion() { return fechaCreacion; }
+    public List<String> getHistorial() { return new ArrayList<>(historial); }
+
     public void setId(Long id) { this.id = id; }
 }

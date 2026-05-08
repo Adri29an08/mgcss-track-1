@@ -1,6 +1,7 @@
-com\mgcss\domain\SolicitudRepository.class
 com\mgcss\service\SolicitudService.class
+com\mgcss\domain\SolicitudRepository.class
 com\mgcss\MgcssTrackApplication.class
+com\mgcss\infrastructure\JpaSolicitudRepository.class
 com\mgcss\domain\EstadoSolicitud.class
 com\mgcss\domain\TecnicoRepository.class
 com\mgcss\domain\EstadoTecnico.class

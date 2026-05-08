@@ -54,23 +54,6 @@ class SolicitudTest {
 
     @Test
     @Tag("unit")
-    void debe_permitir_reapertura_y_mantener_historial() {
-        Solicitud s = new Solicitud("Reparación de servidor de correo");
-        Tecnico t = new Tecnico(EstadoTecnico.ACTIVO);
-        
-        s.asignarTecnico(t);
-        s.iniciarTrabajo();
-        s.cerrar();
-        
-        // Acción de la Sesión 9
-        s.reabrir();
-        
-        assertEquals(EstadoSolicitud.EN_PROCESO, s.getEstado());
-        assertTrue(s.getHistorial().size() >= 4); // Abierta, En Proceso, Cerrada, Reabierta
-    }
-
-    @Test
-    @Tag("unit")
     void debe_permitir_reapertura_y_registrar_historial_completo() {
         // 1. Crear (Estado: ABIERTA)
         Solicitud s = new Solicitud("Reparación de terminal punto de venta");

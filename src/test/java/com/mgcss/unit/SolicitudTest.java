@@ -1,6 +1,7 @@
 package com.mgcss.unit;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -47,5 +48,22 @@ class SolicitudTest {
     void no_debe_permitir_descripcion_demasiado_corta() {
         // Regla de integridad de datos 
         assertThrows(IllegalArgumentException.class, () -> new Solicitud("Corta"));
+    }
+
+    @Test
+    @Tag("unit")
+    void debe_permitir_reapertura_y_mantener_historial() {
+        Solicitud s = new Solicitud("Reparación de servidor de correo");
+        Tecnico t = new Tecnico(EstadoTecnico.ACTIVO);
+        
+        s.asignarTecnico(t);
+        s.iniciarTrabajo();
+        s.cerrar();
+        
+        // Acción de la Sesión 9
+        s.reabrir();
+        
+        assertEquals(EstadoSolicitud.EN_PROCESO, s.getEstado());
+        assertTrue(s.getHistorial().size() >= 4); // Abierta, En Proceso, Cerrada, Reabierta
     }
 }

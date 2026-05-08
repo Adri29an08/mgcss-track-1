@@ -34,7 +34,6 @@ public class Solicitud {
 
     private LocalDateTime fechaCreacion;
 
-    // --- NUEVO: Historial de estados ---
     @ElementCollection
     @CollectionTable(name = "solicitud_historial", joinColumns = @JoinColumn(name = "solicitud_id"))
     @Column(name = "estado_cambio")
@@ -45,7 +44,7 @@ public class Solicitud {
     public Solicitud(String descripcion) {
         validarDescripcion(descripcion);
         this.descripcion = descripcion;
-        registrarCambioEstado(EstadoSolicitud.ABIERTA); // Registro inicial [cite: 200]
+        registrarCambioEstado(EstadoSolicitud.ABIERTA);
         this.fechaCreacion = LocalDateTime.now();
     }
 
@@ -54,7 +53,6 @@ public class Solicitud {
         registrarCambioEstado(EstadoSolicitud.CERRADA);
     }
 
-    // --- NUEVO: Regla de Reapertura [cite: 166, 177] ---
     public void reabrir() {
         if (this.estado != EstadoSolicitud.CERRADA) {
             throw new IllegalStateException("Solo se pueden reabrir solicitudes CERRADAS");
@@ -74,15 +72,16 @@ public class Solicitud {
         registrarCambioEstado(EstadoSolicitud.EN_PROCESO);
     }
 
-    // --- Lógica del Historial [cite: 199-200] ---
     private void registrarCambioEstado(EstadoSolicitud nuevoEstado) {
         this.estado = nuevoEstado;
         this.historial.add("Estado cambiado a " + nuevoEstado + " el " + LocalDateTime.now());
     }
 
-    // Métodos de validación (Sesión 8)
+    // --- MÉTODOS DE VALIDACIÓN (Sesión 8) ---
     private void validarDescripcion(String desc) {
-        if (desc == null || desc.trim().length() < 10) throw new IllegalArgumentException("Descripción inválida");
+        if (desc == null || desc.trim().length() < 10) {
+            throw new IllegalArgumentException("Descripción obligatoria (mínimo 10 carac.)");
+        }
     }
 
     private void asegurarQueSePuedeModificar() {
@@ -93,19 +92,29 @@ public class Solicitud {
 
     private void validarEstadoParaCierre() {
         if (this.estado != EstadoSolicitud.EN_PROCESO) {
-            throw new IllegalStateException("Solo en proceso pueden cerrarse");
+            throw new IllegalStateException("Solo solicitudes en proceso pueden cerrarse");
         }
     }
 
     private void validarEstadoTecnico(Tecnico t) {
-        if (t.getEstado() != EstadoTecnico.ACTIVO) throw new IllegalStateException("Técnico inactivo");
+        if (t.getEstado() != EstadoTecnico.ACTIVO) {
+            throw new IllegalStateException("El técnico debe estar ACTIVO");
+        }
     }
 
     private void validarAsignacionPrevia() {
-        if (this.tecnico == null) throw new IllegalStateException("Sin técnico");
+        if (this.tecnico == null) {
+            throw new IllegalStateException("No se puede iniciar sin un técnico asignado");
+        }
     }
 
-    // Getters
-    public List<String> getHistorial() { return new ArrayList<>(historial); }
+    // --- GETTERS (CRÍTICOS PARA LOS TESTS) ---
+    public Long getId() { return id; }
+    public String getDescripcion() { return descripcion; }
     public EstadoSolicitud getEstado() { return estado; }
+    public Tecnico getTecnico() { return tecnico; }
+    public LocalDateTime getFechaCreacion() { return fechaCreacion; }
+    public List<String> getHistorial() { return new ArrayList<>(historial); }
+
+    public void setId(Long id) { this.id = id; }
 }

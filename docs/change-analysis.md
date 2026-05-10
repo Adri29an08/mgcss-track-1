@@ -32,3 +32,14 @@ Se evaluaron tres opciones antes de elegir la implementación:
 - Contras: Requiere mapeo `@Embeddable` y `@ElementCollection` con `@AttributeOverrides`, complejidad media sin beneficio adicional frente a la Opción A en este contexto
 
 **Decisión:** Se elige la **Opción A** por ser suficiente para los requisitos actuales (trazabilidad de cambios de estado) y mantener la entidad `Solicitud` sin dependencias adicionales. Cada entrada registra el estado alcanzado y el timestamp de la transición. Si en el futuro se necesitan consultas avanzadas sobre el historial, se migrará a la Opción B sin cambiar la interfaz pública de `Solicitud`.
+
+
+### 4. Impacto en persistencia (Fase 4)
+
+Se ha confirmado que el historial de estados debe ser persistente para garantizar la trazabilidad completa de la solicitud, incluso tras el reinicio del sistema. Los pasos realizados han sido: 
+
+ **Añadir mapeo JPA:** Se ha implementado el mapeo mediante la anotación @ElementCollection en la entidad Solicitud. Esto genera automáticamente una tabla denominada solicitud_historial vinculada por la clave ajena solicitud_id.  
+ 
+ **Crear test de integración específico:** Se ha desarrollado una prueba de integración (usando @DataJpaTest) para validar el ciclo de vida completo de la persistencia del historial. 
+ 
+ **Verificar almacenamiento correcto:** El test de integración confirma que, tras realizar múltiples transiciones de estado (incluida la nueva lógica de reapertura), los registros se almacenan y recuperan correctamente en el orden cronológico esperado.

@@ -37,6 +37,7 @@ public class Solicitud {
     @ElementCollection
     @CollectionTable(name = "solicitud_historial", joinColumns = @JoinColumn(name = "solicitud_id"))
     @Column(name = "estado_cambio")
+    //Aquí vamos a guardar los datos de las solicitudes
     private List<String> historial = new ArrayList<>();
 
     protected Solicitud() {}

@@ -121,6 +121,17 @@ La aplicación estará disponible en:
 docker run -p 8081:8080 -e SPRING_PROFILES_ACTIVE=h2 mgcss-track
 ```
 
+### Ejecutar con Docker Compose (recomendado)
+
+```bash
+docker-compose up
+```
+
+Para parar:
+```bash
+docker-compose down
+```
+
 ### Variables de entorno disponibles
 
 | Variable | Descripción | Valor por defecto |

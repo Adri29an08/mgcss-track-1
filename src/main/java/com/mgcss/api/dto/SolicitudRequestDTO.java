@@ -9,7 +9,7 @@ public class SolicitudRequestDTO {
     @Schema(description = "Descripción detallada de la incidencia", example = "El servidor de correo no responde desde las 9:00", required = true)
     private String descripcion;
 
-    public SolicitudRequestDTO() {}
+     public SolicitudRequestDTO() {}
 
     public SolicitudRequestDTO(String descripcion) {
         this.descripcion = descripcion;

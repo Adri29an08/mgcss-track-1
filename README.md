@@ -97,6 +97,39 @@ El proyecto incluye `springdoc-openapi-starter-webmvc-ui`, por lo que normalment
 
 ---
 
+## Docker
+
+### Construir la imagen
+
+```bash
+docker build -t mgcss-track .
+```
+
+### Ejecutar el contenedor
+
+```bash
+docker run -p 8080:8080 -e SPRING_PROFILES_ACTIVE=h2 mgcss-track
+```
+
+La aplicación estará disponible en:
+- Swagger UI: `http://localhost:8080/swagger-ui.html`
+- OpenAPI JSON: `http://localhost:8080/v3/api-docs`
+
+### Ejecutar con puerto personalizado
+
+```bash
+docker run -p 8081:8080 -e SPRING_PROFILES_ACTIVE=h2 mgcss-track
+```
+
+### Variables de entorno disponibles
+
+| Variable | Descripción | Valor por defecto |
+|---|---|---|
+| `SPRING_PROFILES_ACTIVE` | Perfil de Spring activo (`h2`, `prod`) | ninguno |
+| `SERVER_PORT` | Puerto interno del contenedor | `8080` |
+
+---
+
 ## Comandos útiles (resumen)
 
 ```bash

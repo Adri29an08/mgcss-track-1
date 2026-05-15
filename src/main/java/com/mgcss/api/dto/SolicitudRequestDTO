@@ -1,0 +1,23 @@
+package com.mgcss.api.dto;
+
+/**
+ * DTO para la creación de solicitudes.
+ * No contiene lógica ni expone estructura interna  */
+public class SolicitudRequestDTO {
+    
+    private String descripcion;
+
+    public SolicitudRequestDTO() {}
+
+    public SolicitudRequestDTO(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+}

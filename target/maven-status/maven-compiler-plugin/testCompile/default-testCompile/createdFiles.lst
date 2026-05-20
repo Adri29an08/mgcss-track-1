@@ -1,6 +1,8 @@
-com\mgcss\unit\SolicitudTest.class
-com\mgcss\unit\TecnicoTest.class
 com\mgcss\unit\SolicitudServiceTest.class
-com\mgcss\integration\SolicitudRepositoryTest.class
 com\mgcss\unit\SolicitudHistorialTest.class
 com\mgcss\MgcssTrackApplicationTests.class
+com\mgcss\unit\SolicitudTest.class
+com\mgcss\unit\TecnicoTest.class
+com\mgcss\web\SolicitudControllerTest.class
+com\mgcss\integration\SolicitudRepositoryTest.class
+com\mgcss\integration\SolicitudPersistenceTest.class

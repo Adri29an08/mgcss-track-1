@@ -1,7 +1,6 @@
 package com.mgcss.api;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -64,7 +63,7 @@ public class SolicitudController {
     public ResponseEntity<List<SolicitudResponseDTO>> listar() {
         List<SolicitudResponseDTO> lista = solicitudService.listarTodas().stream()
                 .map(this::mapToResponseDTO)
-                .collect(Collectors.toList());
+                .toList();
         return ResponseEntity.ok(lista);
     }
 

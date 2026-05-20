@@ -3,18 +3,28 @@ package com.mgcss.api.dto;
 import java.time.LocalDateTime;
 import java.util.List;
 
-/**
- * DTO para exponer los datos de una solicitud al exterior.
- */
+import io.swagger.v3.oas.annotations.media.Schema;
 
+@Schema(description = "Datos de una solicitud expuestos al cliente externo")
 public class SolicitudResponseDTO {
 
+    @Schema(description = "Identificador único de la solicitud", example = "1")
     private Long id;
+
+    @Schema(description = "Descripción detallada de la incidencia", example = "El servidor de correo no responde desde las 9:00")
     private String descripcion;
+
+    @Schema(description = "Estado actual de la solicitud", example = "ABIERTA", allowableValues = {"ABIERTA", "EN_PROCESO", "CERRADA"})
     private String estado;
-    private Long tecnicoId; // Solo exponemos el ID, no la entidad completa 
+
+    @Schema(description = "ID del técnico asignado, null si no tiene técnico", example = "5")
+    private Long tecnicoId;
+
+    @Schema(description = "Fecha y hora de creación de la solicitud")
     private LocalDateTime fechaCreacion;
-    private List<String> historial; 
+
+    @Schema(description = "Historial de transiciones de estado")
+    private List<String> historial;
 
     public SolicitudResponseDTO() {}
 

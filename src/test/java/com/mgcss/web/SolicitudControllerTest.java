@@ -44,7 +44,9 @@ class SolicitudControllerTest {
 
     @Test
     void debe_devolver_400_si_la_descripcion_es_corta() throws Exception {
-        // Fase 3.2: Manejo de errores [cite: 101]
+        when(solicitudService.crearSolicitud("corta"))
+                .thenThrow(new IllegalStateException("La descripción debe tener al menos 10 caracteres"));
+
         mockMvc.perform(post("/api/solicitudes")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"descripcion\": \"corta\"}"))

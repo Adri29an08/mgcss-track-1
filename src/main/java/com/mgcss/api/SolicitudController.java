@@ -22,6 +22,10 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
 @RestController
 @RequestMapping("/api/solicitudes")
 public class SolicitudController {
@@ -32,21 +36,30 @@ public class SolicitudController {
         this.solicitudService = solicitudService;
     }
 
-    // POST -> Crear solicitud
+    @Operation(summary = "Crear una solicitud", description = "Registra una nueva solicitud en estado ABIERTA")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Solicitud creada con éxito"),
+        @ApiResponse(responseCode = "400", description = "Descripción inválida (mínimo 10 caracteres)")
+    })
     @PostMapping
     public ResponseEntity<SolicitudResponseDTO> crear(@RequestBody SolicitudRequestDTO request) {
         Solicitud nueva = solicitudService.crearSolicitud(request.getDescripcion());
         return ResponseEntity.ok(mapToResponseDTO(nueva));
     }
 
-    // GET -> Consultar por ID
+    @Operation(summary = "Consultar solicitud por ID", description = "Devuelve los datos de una solicitud existente")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Solicitud encontrada"),
+        @ApiResponse(responseCode = "404", description = "Solicitud no encontrada")
+    })
     @GetMapping("/{id}")
     public ResponseEntity<SolicitudResponseDTO> consultar(@PathVariable Long id) {
         Solicitud solicitud = solicitudService.buscarPorId(id);
         return ResponseEntity.ok(mapToResponseDTO(solicitud));
     }
 
-    // GET -> Listar todas
+    @Operation(summary = "Listar todas las solicitudes", description = "Devuelve la lista completa de solicitudes")
+    @ApiResponse(responseCode = "200", description = "Lista obtenida con éxito")
     @GetMapping
     public ResponseEntity<List<SolicitudResponseDTO>> listar() {
         List<SolicitudResponseDTO> lista = solicitudService.listarTodas().stream()
@@ -68,11 +81,41 @@ public class SolicitudController {
         return ResponseEntity.ok(mapToResponseDTO(reabierta));
     }
 
-    // PUT -> Cerrar solicitud 
+    @Operation(summary = "Asignar técnico a una solicitud", description = "Asigna un técnico existente a una solicitud")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Técnico asignado con éxito"),
+        @ApiResponse(responseCode = "404", description = "Solicitud o técnico no encontrado")
+    })
+    @PatchMapping("/{id}/asignar-tecnico/{tecnicoId}")
+    public ResponseEntity<SolicitudResponseDTO> asignarTecnico(
+            @PathVariable Long id, @PathVariable Long tecnicoId) {
+        solicitudService.asignarTecnico(id, tecnicoId);
+        Solicitud actualizada = solicitudService.buscarPorId(id);
+        return ResponseEntity.ok(mapToResponseDTO(actualizada));
+    }
+
+    @Operation(summary = "Cerrar una solicitud", description = "Cierra una solicitud que está EN_PROCESO")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Solicitud cerrada con éxito"),
+        @ApiResponse(responseCode = "400", description = "La solicitud no está EN_PROCESO"),
+        @ApiResponse(responseCode = "404", description = "No existe la solicitud")
+    })
     @PutMapping("/{id}/cerrar")
     public ResponseEntity<SolicitudResponseDTO> cerrar(@PathVariable Long id) {
         Solicitud cerrada = solicitudService.cerrarSolicitud(id);
         return ResponseEntity.ok(mapToResponseDTO(cerrada));
+    }
+
+    @ExceptionHandler(IllegalStateException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String handleIllegalState(IllegalStateException ex) {
+        return ex.getMessage();
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String handleIllegalArgument(IllegalArgumentException ex) {
+        return ex.getMessage();
     }
 
     // MÉTODOS DE MAPEO Fase 2.3

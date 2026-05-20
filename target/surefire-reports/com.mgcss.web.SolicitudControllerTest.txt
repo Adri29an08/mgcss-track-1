@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.mgcss.web.SolicitudControllerTest
 -------------------------------------------------------------------------------
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 22.83 s -- in com.mgcss.web.SolicitudControllerTest
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.11 s -- in com.mgcss.web.SolicitudControllerTest

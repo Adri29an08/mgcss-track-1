@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.mgcss.web.SolicitudControllerTest" time="22.835" tests="9" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.mgcss.web.SolicitudControllerTest" time="12.113" tests="10" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -17,7 +17,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="ES"/>
     <property name="sun.boot.library.path" value="C:\Program Files\BellSoft\LibericaJDK-23\bin"/>
-    <property name="sun.java.command" value="C:\Users\Pc\AppData\Local\Temp\surefire3909327050441022482\surefirebooter-20260520183103582_3.jar C:\Users\Pc\AppData\Local\Temp\surefire3909327050441022482 2026-05-20T18-31-03_242-jvmRun1 surefire-20260520183103582_1tmp surefire_0-20260520183103582_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\Pc\AppData\Local\Temp\surefire2561240796267573540\surefirebooter-20260520183953776_3.jar C:\Users\Pc\AppData\Local\Temp\surefire2561240796267573540 2026-05-20T18-39-53_449-jvmRun1 surefire-20260520183953776_1tmp surefire_0-20260520183953776_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="SolicitudControllerTest"/>
     <property name="surefire.test.class.path" value="C:\Users\Pc\Desktop\CLASES\4º AÑO\2º CUATRI\MGCSS\Practicas\mgcss-track-1\target\test-classes;C:\Users\Pc\Desktop\CLASES\4º AÑO\2º CUATRI\MGCSS\Practicas\mgcss-track-1\target\classes;C:\Users\Pc\.m2\repository\org\springframework\boot\spring-boot-starter-web\3.5.11\spring-boot-starter-web-3.5.11.jar;C:\Users\Pc\.m2\repository\org\springframework\boot\spring-boot-starter\3.5.11\spring-boot-starter-3.5.11.jar;C:\Users\Pc\.m2\repository\org\springframework\boot\spring-boot-starter-logging\3.5.11\spring-boot-starter-logging-3.5.11.jar;C:\Users\Pc\.m2\repository\ch\qos\logback\logback-classic\1.5.32\logback-classic-1.5.32.jar;C:\Users\Pc\.m2\repository\ch\qos\logback\logback-core\1.5.32\logback-core-1.5.32.jar;C:\Users\Pc\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.24.3\log4j-to-slf4j-2.24.3.jar;C:\Users\Pc\.m2\repository\org\apache\logging\log4j\log4j-api\2.24.3\log4j-api-2.24.3.jar;C:\Users\Pc\.m2\repository\org\slf4j\jul-to-slf4j\2.0.17\jul-to-slf4j-2.0.17.jar;C:\Users\Pc\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\Pc\.m2\repository\org\yaml\snakeyaml\2.4\snakeyaml-2.4.jar;C:\Users\Pc\.m2\repository\org\springframework\boot\spring-boot-starter-json\3.5.11\spring-boot-starter-json-3.5.11.jar;C:\Users\Pc\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.19.4\jackson-databind-2.19.4.jar;C:\Users\Pc\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.19.4\jackson-annotations-2.19.4.jar;C:\Users\Pc\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.19.4\jackson-core-2.19.4.jar;C:\Users\Pc\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.19.4\jackson-datatype-jdk8-2.19.4.jar;C:\Users\Pc\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.19.4\jackson-datatype-jsr310-2.19.4.jar;C:\Users\Pc\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.19.4\jackson-module-parameter-names-2.19.4.jar;C:\Users\Pc\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\3.5.11\spring-boot-starter-tomcat-3.5.11.jar;C:\Users\Pc\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.52\tomcat-embed-core-10.1.52.jar;C:\Users\Pc\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.52\tomcat-embed-el-10.1.52.jar;C:\Users\Pc\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.52\tomcat-embed-websocket-10.1.52.jar;C:\Users\Pc\.m2\repository\org\springframework\spring-web\6.2.16\spring-web-6.2.16.jar;C:\Users\Pc\.m2\repository\org\springframework\spring-beans\6.2.16\spring-beans-6.2.16.jar;C:\Users\Pc\.m2\repository\io\micrometer\micrometer-observation\1.15.9\micrometer-observation-1.15.9.jar;C:\Users\Pc\.m2\repository\io\micrometer\micrometer-commons\1.15.9\micrometer-commons-1.15.9.jar;C:\Users\Pc\.m2\repository\org\springframework\spring-webmvc\6.2.16\spring-webmvc-6.2.16.jar;C:\Users\Pc\.m2\repository\org\springframework\spring-aop\6.2.16\spring-aop-6.2.16.jar;C:\Users\Pc\.m2\repository\org\springframework\spring-context\6.2.16\spring-context-6.2.16.jar;C:\Users\Pc\.m2\repository\org\springframework\spring-expression\6.2.16\spring-expression-6.2.16.jar;C:\Users\Pc\.m2\repository\org\springdoc\springdoc-openapi-starter-webmvc-ui\2.8.16\springdoc-openapi-starter-webmvc-ui-2.8.16.jar;C:\Users\Pc\.m2\repository\org\springdoc\springdoc-openapi-starter-webmvc-api\2.8.16\springdoc-openapi-starter-webmvc-api-2.8.16.jar;C:\Users\Pc\.m2\repository\org\springdoc\springdoc-openapi-starter-common\2.8.16\springdoc-openapi-starter-common-2.8.16.jar;C:\Users\Pc\.m2\repository\org\springframework\boot\spring-boot-starter-validation\3.5.11\spring-boot-starter-validation-3.5.11.jar;C:\Users\Pc\.m2\repository\org\hibernate\validator\hibernate-validator\8.0.3.Final\hibernate-validator-8.0.3.Final.jar;C:\Users\Pc\.m2\repository\io\swagger\core\v3\swagger-core-jakarta\2.2.43\swagger-core-jakarta-2.2.43.jar;C:\Users\Pc\.m2\repository\org\apache\commons\commons-lang3\3.17.0\commons-lang3-3.17.0.jar;C:\Users\Pc\.m2\repository\io\swagger\core\v3\swagger-annotations-jakarta\2.2.43\swagger-annotations-jakarta-2.2.43.jar;C:\Users\Pc\.m2\repository\io\swagger\core\v3\swagger-models-jakarta\2.2.43\swagger-models-jakarta-2.2.43.jar;C:\Users\Pc\.m2\repository\jakarta\validation\jakarta.validation-api\3.0.2\jakarta.validation-api-3.0.2.jar;C:\Users\Pc\.m2\repository\com\fasterxml\jackson\dataformat\jackson-dataformat-yaml\2.19.4\jackson-dataformat-yaml-2.19.4.jar;C:\Users\Pc\.m2\repository\org\webjars\swagger-ui\5.32.0\swagger-ui-5.32.0.jar;C:\Users\Pc\.m2\repository\org\webjars\webjars-locator-lite\1.1.3\webjars-locator-lite-1.1.3.jar;C:\Users\Pc\.m2\repository\org\jspecify\jspecify\1.0.0\jspecify-1.0.0.jar;C:\Users\Pc\.m2\repository\org\springframework\boot\spring-boot-devtools\3.5.11\spring-boot-devtools-3.5.11.jar;C:\Users\Pc\.m2\repository\org\springframework\boot\spring-boot\3.5.11\spring-boot-3.5.11.jar;C:\Users\Pc\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.5.11\spring-boot-autoconfigure-3.5.11.jar;C:\Users\Pc\.m2\repository\com\h2database\h2\2.3.232\h2-2.3.232.jar;C:\Users\Pc\.m2\repository\org\postgresql\postgresql\42.7.10\postgresql-42.7.10.jar;C:\Users\Pc\.m2\repository\org\checkerframework\checker-qual\3.52.0\checker-qual-3.52.0.jar;C:\Users\Pc\.m2\repository\org\springframework\boot\spring-boot-starter-test\3.5.11\spring-boot-starter-test-3.5.11.jar;C:\Users\Pc\.m2\repository\org\springframework\boot\spring-boot-test\3.5.11\spring-boot-test-3.5.11.jar;C:\Users\Pc\.m2\repository\org\springframework\boot\spring-boot-test-autoconfigure\3.5.11\spring-boot-test-autoconfigure-3.5.11.jar;C:\Users\Pc\.m2\repository\com\jayway\jsonpath\json-path\2.9.0\json-path-2.9.0.jar;C:\Users\Pc\.m2\repository\org\slf4j\slf4j-api\2.0.17\slf4j-api-2.0.17.jar;C:\Users\Pc\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.4\jakarta.xml.bind-api-4.0.4.jar;C:\Users\Pc\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.4\jakarta.activation-api-2.1.4.jar;C:\Users\Pc\.m2\repository\net\minidev\json-smart\2.5.2\json-smart-2.5.2.jar;C:\Users\Pc\.m2\repository\net\minidev\accessors-smart\2.5.2\accessors-smart-2.5.2.jar;C:\Users\Pc\.m2\repository\org\ow2\asm\asm\9.7.1\asm-9.7.1.jar;C:\Users\Pc\.m2\repository\org\assertj\assertj-core\3.27.7\assertj-core-3.27.7.jar;C:\Users\Pc\.m2\repository\net\bytebuddy\byte-buddy\1.17.8\byte-buddy-1.17.8.jar;C:\Users\Pc\.m2\repository\org\awaitility\awaitility\4.2.2\awaitility-4.2.2.jar;C:\Users\Pc\.m2\repository\org\hamcrest\hamcrest\3.0\hamcrest-3.0.jar;C:\Users\Pc\.m2\repository\org\junit\jupiter\junit-jupiter\5.12.2\junit-jupiter-5.12.2.jar;C:\Users\Pc\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.12.2\junit-jupiter-api-5.12.2.jar;C:\Users\Pc\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Pc\.m2\repository\org\junit\platform\junit-platform-commons\1.12.2\junit-platform-commons-1.12.2.jar;C:\Users\Pc\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Pc\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.12.2\junit-jupiter-params-5.12.2.jar;C:\Users\Pc\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.12.2\junit-jupiter-engine-5.12.2.jar;C:\Users\Pc\.m2\repository\org\junit\platform\junit-platform-engine\1.12.2\junit-platform-engine-1.12.2.jar;C:\Users\Pc\.m2\repository\org\mockito\mockito-core\5.17.0\mockito-core-5.17.0.jar;C:\Users\Pc\.m2\repository\net\bytebuddy\byte-buddy-agent\1.17.8\byte-buddy-agent-1.17.8.jar;C:\Users\Pc\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\Pc\.m2\repository\org\mockito\mockito-junit-jupiter\5.17.0\mockito-junit-jupiter-5.17.0.jar;C:\Users\Pc\.m2\repository\org\skyscreamer\jsonassert\1.5.3\jsonassert-1.5.3.jar;C:\Users\Pc\.m2\repository\com\vaadin\external\google\android-json\0.0.20131108.vaadin1\android-json-0.0.20131108.vaadin1.jar;C:\Users\Pc\.m2\repository\org\springframework\spring-core\6.2.16\spring-core-6.2.16.jar;C:\Users\Pc\.m2\repository\org\springframework\spring-jcl\6.2.16\spring-jcl-6.2.16.jar;C:\Users\Pc\.m2\repository\org\springframework\spring-test\6.2.16\spring-test-6.2.16.jar;C:\Users\Pc\.m2\repository\org\xmlunit\xmlunit-core\2.10.4\xmlunit-core-2.10.4.jar;C:\Users\Pc\.m2\repository\org\springframework\boot\spring-boot-starter-data-jpa\3.5.11\spring-boot-starter-data-jpa-3.5.11.jar;C:\Users\Pc\.m2\repository\org\springframework\boot\spring-boot-starter-jdbc\3.5.11\spring-boot-starter-jdbc-3.5.11.jar;C:\Users\Pc\.m2\repository\com\zaxxer\HikariCP\6.3.3\HikariCP-6.3.3.jar;C:\Users\Pc\.m2\repository\org\springframework\spring-jdbc\6.2.16\spring-jdbc-6.2.16.jar;C:\Users\Pc\.m2\repository\org\hibernate\orm\hibernate-core\6.6.42.Final\hibernate-core-6.6.42.Final.jar;C:\Users\Pc\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar;C:\Users\Pc\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\Pc\.m2\repository\org\jboss\logging\jboss-logging\3.6.2.Final\jboss-logging-3.6.2.Final.jar;C:\Users\Pc\.m2\repository\org\hibernate\common\hibernate-commons-annotations\7.0.3.Final\hibernate-commons-annotations-7.0.3.Final.jar;C:\Users\Pc\.m2\repository\io\smallrye\jandex\3.2.0\jandex-3.2.0.jar;C:\Users\Pc\.m2\repository\com\fasterxml\classmate\1.7.3\classmate-1.7.3.jar;C:\Users\Pc\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.6\jaxb-runtime-4.0.6.jar;C:\Users\Pc\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.6\jaxb-core-4.0.6.jar;C:\Users\Pc\.m2\repository\org\eclipse\angus\angus-activation\2.0.3\angus-activation-2.0.3.jar;C:\Users\Pc\.m2\repository\org\glassfish\jaxb\txw2\4.0.6\txw2-4.0.6.jar;C:\Users\Pc\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.2\istack-commons-runtime-4.1.2.jar;C:\Users\Pc\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\Pc\.m2\repository\org\antlr\antlr4-runtime\4.13.0\antlr4-runtime-4.13.0.jar;C:\Users\Pc\.m2\repository\org\springframework\data\spring-data-jpa\3.5.9\spring-data-jpa-3.5.9.jar;C:\Users\Pc\.m2\repository\org\springframework\data\spring-data-commons\3.5.9\spring-data-commons-3.5.9.jar;C:\Users\Pc\.m2\repository\org\springframework\spring-orm\6.2.16\spring-orm-6.2.16.jar;C:\Users\Pc\.m2\repository\org\springframework\spring-tx\6.2.16\spring-tx-6.2.16.jar;C:\Users\Pc\.m2\repository\org\springframework\spring-aspects\6.2.16\spring-aspects-6.2.16.jar;C:\Users\Pc\.m2\repository\org\aspectj\aspectjweaver\1.9.25.1\aspectjweaver-1.9.25.1.jar;C:\Users\Pc\.m2\repository\org\projectlombok\lombok\1.18.42\lombok-1.18.42.jar;"/>
@@ -35,7 +35,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="FILE_LOG_CHARSET" value="UTF-8"/>
     <property name="java.awt.headless" value="true"/>
-    <property name="surefire.real.class.path" value="C:\Users\Pc\AppData\Local\Temp\surefire3909327050441022482\surefirebooter-20260520183103582_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Pc\AppData\Local\Temp\surefire2561240796267573540\surefirebooter-20260520183953776_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="23.0.2+9"/>
@@ -53,7 +53,7 @@
     <property name="user.dir" value="C:\Users\Pc\Desktop\CLASES\4º AÑO\2º CUATRI\MGCSS\Practicas\mgcss-track-1"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="PID" value="24468"/>
+    <property name="PID" value="32696"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="CONSOLE_LOG_CHARSET" value="windows-1252"/>
     <property name="native.encoding" value="Cp1252"/>
@@ -66,10 +66,10 @@
     <property name="java.class.version" value="67.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[mgcss-track] "/>
   </properties>
-  <testcase name="debe_cerrar_solicitud_y_devolver_200" classname="com.mgcss.web.SolicitudControllerTest" time="1.186">
-    <system-out><![CDATA[18:31:09.755 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.mgcss.web.SolicitudControllerTest]: SolicitudControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-18:31:11.116 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.mgcss.MgcssTrackApplication for test class com.mgcss.web.SolicitudControllerTest
-18:31:11.749 [main] INFO org.springframework.boot.devtools.restart.RestartApplicationListener -- Restart disabled due to context in which it is running
+  <testcase name="debe_cerrar_solicitud_y_devolver_200" classname="com.mgcss.web.SolicitudControllerTest" time="0.673">
+    <system-out><![CDATA[18:39:57.850 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.mgcss.web.SolicitudControllerTest]: SolicitudControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+18:39:58.545 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.mgcss.MgcssTrackApplication for test class com.mgcss.web.SolicitudControllerTest
+18:39:58.934 [main] INFO org.springframework.boot.devtools.restart.RestartApplicationListener -- Restart disabled due to context in which it is running
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -80,12 +80,12 @@
 
  :: Spring Boot ::               (v3.5.11)
 
-2026-05-20T18:31:13.577+02:00  INFO 24468 --- [mgcss-track] [           main] com.mgcss.web.SolicitudControllerTest    : Starting SolicitudControllerTest using Java 23.0.2 with PID 24468 (started by Pc in C:\Users\Pc\Desktop\CLASES\4� A�O\2� CUATRI\MGCSS\Practicas\mgcss-track-1)
-2026-05-20T18:31:13.582+02:00  INFO 24468 --- [mgcss-track] [           main] com.mgcss.web.SolicitudControllerTest    : No active profile set, falling back to 1 default profile: "default"
-2026-05-20T18:31:29.140+02:00  INFO 24468 --- [mgcss-track] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-05-20T18:31:29.141+02:00  INFO 24468 --- [mgcss-track] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-05-20T18:31:29.169+02:00  INFO 24468 --- [mgcss-track] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 14 ms
-2026-05-20T18:31:29.426+02:00  INFO 24468 --- [mgcss-track] [           main] com.mgcss.web.SolicitudControllerTest    : Started SolicitudControllerTest in 17.777 seconds (process running for 25.497)
+2026-05-20T18:40:00.556+02:00  INFO 32696 --- [mgcss-track] [           main] com.mgcss.web.SolicitudControllerTest    : Starting SolicitudControllerTest using Java 23.0.2 with PID 32696 (started by Pc in C:\Users\Pc\Desktop\CLASES\4� A�O\2� CUATRI\MGCSS\Practicas\mgcss-track-1)
+2026-05-20T18:40:00.561+02:00  INFO 32696 --- [mgcss-track] [           main] com.mgcss.web.SolicitudControllerTest    : No active profile set, falling back to 1 default profile: "default"
+2026-05-20T18:40:07.479+02:00  INFO 32696 --- [mgcss-track] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-05-20T18:40:07.480+02:00  INFO 32696 --- [mgcss-track] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-05-20T18:40:07.488+02:00  INFO 32696 --- [mgcss-track] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 4 ms
+2026-05-20T18:40:07.602+02:00  INFO 32696 --- [mgcss-track] [           main] com.mgcss.web.SolicitudControllerTest    : Started SolicitudControllerTest in 8.713 seconds (process running for 13.537)
 ]]></system-out>
     <system-err><![CDATA[java.lang.instrument.IllegalClassFormatException: Error while instrumenting jdk/jshell/execution/impl/ConsoleImpl$ConsoleProviderImpl with JaCoCo 0.8.11.202310140853/f33756c.
 	at org.jacoco.agent.rt.internal_4742761.CoverageTransformer.transform(CoverageTransformer.java:94)
@@ -1304,6 +1304,108 @@ Caused by: java.lang.IllegalArgumentException: Unsupported class file major vers
 	at org.jacoco.agent.rt.internal_4742761.core.instr.Instrumenter.instrument(Instrumenter.java:77)
 	at org.jacoco.agent.rt.internal_4742761.core.instr.Instrumenter.instrument(Instrumenter.java:109)
 	... 42 more
+java.lang.instrument.IllegalClassFormatException: Error while instrumenting sun/security/jgss/SunProvider with JaCoCo 0.8.11.202310140853/f33756c.
+	at org.jacoco.agent.rt.internal_4742761.CoverageTransformer.transform(CoverageTransformer.java:94)
+	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:242)
+	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
+	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:610)
+	at java.base/java.lang.ClassLoader.defineClass2(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1116)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:182)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:821)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassInModuleOrNull(BuiltinClassLoader.java:741)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClass(BuiltinClassLoader.java:621)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:640)
+	at java.base/java.lang.Class.forName(Class.java:669)
+	at java.base/java.lang.Class.forName(Class.java:644)
+	at java.base/java.util.ServiceLoader.loadProvider(ServiceLoader.java:855)
+	at java.base/java.util.ServiceLoader$ModuleServicesLookupIterator.hasNext(ServiceLoader.java:1080)
+	at java.base/java.util.ServiceLoader$2.hasNext(ServiceLoader.java:1305)
+	at java.base/java.util.ServiceLoader$3.hasNext(ServiceLoader.java:1387)
+	at java.base/sun.security.jca.ProviderConfig$ProviderLoader.load(ProviderConfig.java:349)
+	at java.base/sun.security.jca.ProviderConfig$3.run(ProviderConfig.java:258)
+	at java.base/sun.security.jca.ProviderConfig$3.run(ProviderConfig.java:252)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:319)
+	at java.base/sun.security.jca.ProviderConfig.doLoadProvider(ProviderConfig.java:252)
+	at java.base/sun.security.jca.ProviderConfig.getProvider(ProviderConfig.java:229)
+	at java.base/sun.security.jca.ProviderList.loadAll(ProviderList.java:320)
+	at java.base/sun.security.jca.ProviderList.removeInvalid(ProviderList.java:337)
+	at java.base/sun.security.jca.Providers.getFullProviderList(Providers.java:186)
+	at java.base/java.security.Security.getProviders(Security.java:434)
+	at java.base/java.security.Security.getAlgorithms(Security.java:976)
+	at org.apache.catalina.util.SessionIdGeneratorBase.<clinit>(SessionIdGeneratorBase.java:48)
+	at org.apache.catalina.authenticator.AuthenticatorBase.<init>(AuthenticatorBase.java:189)
+	at org.apache.catalina.authenticator.NonLoginAuthenticator.<init>(NonLoginAuthenticator.java:29)
+	at org.springframework.boot.autoconfigure.BackgroundPreinitializer$TomcatInitializer.run(BackgroundPreinitializer.java:202)
+	at org.springframework.boot.autoconfigure.BackgroundPreinitializer$1.runSafely(BackgroundPreinitializer.java:120)
+	at org.springframework.boot.autoconfigure.BackgroundPreinitializer$1.run(BackgroundPreinitializer.java:113)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+Caused by: java.io.IOException: Error while instrumenting sun/security/jgss/SunProvider with JaCoCo 0.8.11.202310140853/f33756c.
+	at org.jacoco.agent.rt.internal_4742761.core.instr.Instrumenter.instrumentError(Instrumenter.java:161)
+	at org.jacoco.agent.rt.internal_4742761.core.instr.Instrumenter.instrument(Instrumenter.java:111)
+	at org.jacoco.agent.rt.internal_4742761.CoverageTransformer.transform(CoverageTransformer.java:92)
+	... 34 more
+Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 67
+	at org.jacoco.agent.rt.internal_4742761.asm.ClassReader.<init>(ClassReader.java:200)
+	at org.jacoco.agent.rt.internal_4742761.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.jacoco.agent.rt.internal_4742761.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.jacoco.agent.rt.internal_4742761.core.internal.instr.InstrSupport.classReaderFor(InstrSupport.java:280)
+	at org.jacoco.agent.rt.internal_4742761.core.instr.Instrumenter.instrument(Instrumenter.java:77)
+	at org.jacoco.agent.rt.internal_4742761.core.instr.Instrumenter.instrument(Instrumenter.java:109)
+	... 35 more
+java.lang.instrument.IllegalClassFormatException: Error while instrumenting sun/security/jgss/SunProvider$ProviderService with JaCoCo 0.8.11.202310140853/f33756c.
+	at org.jacoco.agent.rt.internal_4742761.CoverageTransformer.transform(CoverageTransformer.java:94)
+	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:242)
+	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
+	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:610)
+	at java.base/java.lang.ClassLoader.defineClass2(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1116)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:182)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:821)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassInModuleOrNull(BuiltinClassLoader.java:741)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:665)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:639)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:528)
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3650)
+	at java.base/java.lang.Class.getDeclaredPublicMethods(Class.java:2923)
+	at java.base/java.lang.System$2.getDeclaredPublicMethods(System.java:2425)
+	at java.base/java.util.ServiceLoader.findStaticProviderMethod(ServiceLoader.java:617)
+	at java.base/java.util.ServiceLoader.loadProvider(ServiceLoader.java:881)
+	at java.base/java.util.ServiceLoader$ModuleServicesLookupIterator.hasNext(ServiceLoader.java:1080)
+	at java.base/java.util.ServiceLoader$2.hasNext(ServiceLoader.java:1305)
+	at java.base/java.util.ServiceLoader$3.hasNext(ServiceLoader.java:1387)
+	at java.base/sun.security.jca.ProviderConfig$ProviderLoader.load(ProviderConfig.java:349)
+	at java.base/sun.security.jca.ProviderConfig$3.run(ProviderConfig.java:258)
+	at java.base/sun.security.jca.ProviderConfig$3.run(ProviderConfig.java:252)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:319)
+	at java.base/sun.security.jca.ProviderConfig.doLoadProvider(ProviderConfig.java:252)
+	at java.base/sun.security.jca.ProviderConfig.getProvider(ProviderConfig.java:229)
+	at java.base/sun.security.jca.ProviderList.loadAll(ProviderList.java:320)
+	at java.base/sun.security.jca.ProviderList.removeInvalid(ProviderList.java:337)
+	at java.base/sun.security.jca.Providers.getFullProviderList(Providers.java:186)
+	at java.base/java.security.Security.getProviders(Security.java:434)
+	at java.base/java.security.Security.getAlgorithms(Security.java:976)
+	at org.apache.catalina.util.SessionIdGeneratorBase.<clinit>(SessionIdGeneratorBase.java:48)
+	at org.apache.catalina.authenticator.AuthenticatorBase.<init>(AuthenticatorBase.java:189)
+	at org.apache.catalina.authenticator.NonLoginAuthenticator.<init>(NonLoginAuthenticator.java:29)
+	at org.springframework.boot.autoconfigure.BackgroundPreinitializer$TomcatInitializer.run(BackgroundPreinitializer.java:202)
+	at org.springframework.boot.autoconfigure.BackgroundPreinitializer$1.runSafely(BackgroundPreinitializer.java:120)
+	at org.springframework.boot.autoconfigure.BackgroundPreinitializer$1.run(BackgroundPreinitializer.java:113)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+Caused by: java.io.IOException: Error while instrumenting sun/security/jgss/SunProvider$ProviderService with JaCoCo 0.8.11.202310140853/f33756c.
+	at org.jacoco.agent.rt.internal_4742761.core.instr.Instrumenter.instrumentError(Instrumenter.java:161)
+	at org.jacoco.agent.rt.internal_4742761.core.instr.Instrumenter.instrument(Instrumenter.java:111)
+	at org.jacoco.agent.rt.internal_4742761.CoverageTransformer.transform(CoverageTransformer.java:92)
+	... 38 more
+Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 67
+	at org.jacoco.agent.rt.internal_4742761.asm.ClassReader.<init>(ClassReader.java:200)
+	at org.jacoco.agent.rt.internal_4742761.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.jacoco.agent.rt.internal_4742761.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.jacoco.agent.rt.internal_4742761.core.internal.instr.InstrSupport.classReaderFor(InstrSupport.java:280)
+	at org.jacoco.agent.rt.internal_4742761.core.instr.Instrumenter.instrument(Instrumenter.java:77)
+	at org.jacoco.agent.rt.internal_4742761.core.instr.Instrumenter.instrument(Instrumenter.java:109)
+	... 39 more
 java.lang.instrument.IllegalClassFormatException: Error while instrumenting sun/security/mscapi/SunMSCAPI with JaCoCo 0.8.11.202310140853/f33756c.
 	at org.jacoco.agent.rt.internal_4742761.CoverageTransformer.transform(CoverageTransformer.java:94)
 	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:242)
@@ -2230,108 +2332,6 @@ Caused by: java.lang.IllegalArgumentException: Unsupported class file major vers
 	at org.jacoco.agent.rt.internal_4742761.core.instr.Instrumenter.instrument(Instrumenter.java:77)
 	at org.jacoco.agent.rt.internal_4742761.core.instr.Instrumenter.instrument(Instrumenter.java:109)
 	... 37 more
-java.lang.instrument.IllegalClassFormatException: Error while instrumenting sun/security/jgss/SunProvider with JaCoCo 0.8.11.202310140853/f33756c.
-	at org.jacoco.agent.rt.internal_4742761.CoverageTransformer.transform(CoverageTransformer.java:94)
-	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:242)
-	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
-	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:610)
-	at java.base/java.lang.ClassLoader.defineClass2(Native Method)
-	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1116)
-	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:182)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:821)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassInModuleOrNull(BuiltinClassLoader.java:741)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.findClass(BuiltinClassLoader.java:621)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:640)
-	at java.base/java.lang.Class.forName(Class.java:669)
-	at java.base/java.lang.Class.forName(Class.java:644)
-	at java.base/java.util.ServiceLoader.loadProvider(ServiceLoader.java:855)
-	at java.base/java.util.ServiceLoader$ModuleServicesLookupIterator.hasNext(ServiceLoader.java:1080)
-	at java.base/java.util.ServiceLoader$2.hasNext(ServiceLoader.java:1305)
-	at java.base/java.util.ServiceLoader$3.hasNext(ServiceLoader.java:1387)
-	at java.base/sun.security.jca.ProviderConfig$ProviderLoader.load(ProviderConfig.java:349)
-	at java.base/sun.security.jca.ProviderConfig$3.run(ProviderConfig.java:258)
-	at java.base/sun.security.jca.ProviderConfig$3.run(ProviderConfig.java:252)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:319)
-	at java.base/sun.security.jca.ProviderConfig.doLoadProvider(ProviderConfig.java:252)
-	at java.base/sun.security.jca.ProviderConfig.getProvider(ProviderConfig.java:229)
-	at java.base/sun.security.jca.ProviderList.loadAll(ProviderList.java:320)
-	at java.base/sun.security.jca.ProviderList.removeInvalid(ProviderList.java:337)
-	at java.base/sun.security.jca.Providers.getFullProviderList(Providers.java:186)
-	at java.base/java.security.Security.getProviders(Security.java:434)
-	at java.base/java.security.Security.getAlgorithms(Security.java:976)
-	at org.apache.catalina.util.SessionIdGeneratorBase.<clinit>(SessionIdGeneratorBase.java:48)
-	at org.apache.catalina.authenticator.AuthenticatorBase.<init>(AuthenticatorBase.java:189)
-	at org.apache.catalina.authenticator.NonLoginAuthenticator.<init>(NonLoginAuthenticator.java:29)
-	at org.springframework.boot.autoconfigure.BackgroundPreinitializer$TomcatInitializer.run(BackgroundPreinitializer.java:202)
-	at org.springframework.boot.autoconfigure.BackgroundPreinitializer$1.runSafely(BackgroundPreinitializer.java:120)
-	at org.springframework.boot.autoconfigure.BackgroundPreinitializer$1.run(BackgroundPreinitializer.java:113)
-	at java.base/java.lang.Thread.run(Thread.java:1575)
-Caused by: java.io.IOException: Error while instrumenting sun/security/jgss/SunProvider with JaCoCo 0.8.11.202310140853/f33756c.
-	at org.jacoco.agent.rt.internal_4742761.core.instr.Instrumenter.instrumentError(Instrumenter.java:161)
-	at org.jacoco.agent.rt.internal_4742761.core.instr.Instrumenter.instrument(Instrumenter.java:111)
-	at org.jacoco.agent.rt.internal_4742761.CoverageTransformer.transform(CoverageTransformer.java:92)
-	... 34 more
-Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 67
-	at org.jacoco.agent.rt.internal_4742761.asm.ClassReader.<init>(ClassReader.java:200)
-	at org.jacoco.agent.rt.internal_4742761.asm.ClassReader.<init>(ClassReader.java:180)
-	at org.jacoco.agent.rt.internal_4742761.asm.ClassReader.<init>(ClassReader.java:166)
-	at org.jacoco.agent.rt.internal_4742761.core.internal.instr.InstrSupport.classReaderFor(InstrSupport.java:280)
-	at org.jacoco.agent.rt.internal_4742761.core.instr.Instrumenter.instrument(Instrumenter.java:77)
-	at org.jacoco.agent.rt.internal_4742761.core.instr.Instrumenter.instrument(Instrumenter.java:109)
-	... 35 more
-java.lang.instrument.IllegalClassFormatException: Error while instrumenting sun/security/jgss/SunProvider$ProviderService with JaCoCo 0.8.11.202310140853/f33756c.
-	at org.jacoco.agent.rt.internal_4742761.CoverageTransformer.transform(CoverageTransformer.java:94)
-	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:242)
-	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
-	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:610)
-	at java.base/java.lang.ClassLoader.defineClass2(Native Method)
-	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1116)
-	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:182)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:821)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassInModuleOrNull(BuiltinClassLoader.java:741)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:665)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:639)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:528)
-	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
-	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3650)
-	at java.base/java.lang.Class.getDeclaredPublicMethods(Class.java:2923)
-	at java.base/java.lang.System$2.getDeclaredPublicMethods(System.java:2425)
-	at java.base/java.util.ServiceLoader.findStaticProviderMethod(ServiceLoader.java:617)
-	at java.base/java.util.ServiceLoader.loadProvider(ServiceLoader.java:881)
-	at java.base/java.util.ServiceLoader$ModuleServicesLookupIterator.hasNext(ServiceLoader.java:1080)
-	at java.base/java.util.ServiceLoader$2.hasNext(ServiceLoader.java:1305)
-	at java.base/java.util.ServiceLoader$3.hasNext(ServiceLoader.java:1387)
-	at java.base/sun.security.jca.ProviderConfig$ProviderLoader.load(ProviderConfig.java:349)
-	at java.base/sun.security.jca.ProviderConfig$3.run(ProviderConfig.java:258)
-	at java.base/sun.security.jca.ProviderConfig$3.run(ProviderConfig.java:252)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:319)
-	at java.base/sun.security.jca.ProviderConfig.doLoadProvider(ProviderConfig.java:252)
-	at java.base/sun.security.jca.ProviderConfig.getProvider(ProviderConfig.java:229)
-	at java.base/sun.security.jca.ProviderList.loadAll(ProviderList.java:320)
-	at java.base/sun.security.jca.ProviderList.removeInvalid(ProviderList.java:337)
-	at java.base/sun.security.jca.Providers.getFullProviderList(Providers.java:186)
-	at java.base/java.security.Security.getProviders(Security.java:434)
-	at java.base/java.security.Security.getAlgorithms(Security.java:976)
-	at org.apache.catalina.util.SessionIdGeneratorBase.<clinit>(SessionIdGeneratorBase.java:48)
-	at org.apache.catalina.authenticator.AuthenticatorBase.<init>(AuthenticatorBase.java:189)
-	at org.apache.catalina.authenticator.NonLoginAuthenticator.<init>(NonLoginAuthenticator.java:29)
-	at org.springframework.boot.autoconfigure.BackgroundPreinitializer$TomcatInitializer.run(BackgroundPreinitializer.java:202)
-	at org.springframework.boot.autoconfigure.BackgroundPreinitializer$1.runSafely(BackgroundPreinitializer.java:120)
-	at org.springframework.boot.autoconfigure.BackgroundPreinitializer$1.run(BackgroundPreinitializer.java:113)
-	at java.base/java.lang.Thread.run(Thread.java:1575)
-Caused by: java.io.IOException: Error while instrumenting sun/security/jgss/SunProvider$ProviderService with JaCoCo 0.8.11.202310140853/f33756c.
-	at org.jacoco.agent.rt.internal_4742761.core.instr.Instrumenter.instrumentError(Instrumenter.java:161)
-	at org.jacoco.agent.rt.internal_4742761.core.instr.Instrumenter.instrument(Instrumenter.java:111)
-	at org.jacoco.agent.rt.internal_4742761.CoverageTransformer.transform(CoverageTransformer.java:92)
-	... 38 more
-Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 67
-	at org.jacoco.agent.rt.internal_4742761.asm.ClassReader.<init>(ClassReader.java:200)
-	at org.jacoco.agent.rt.internal_4742761.asm.ClassReader.<init>(ClassReader.java:180)
-	at org.jacoco.agent.rt.internal_4742761.asm.ClassReader.<init>(ClassReader.java:166)
-	at org.jacoco.agent.rt.internal_4742761.core.internal.instr.InstrSupport.classReaderFor(InstrSupport.java:280)
-	at org.jacoco.agent.rt.internal_4742761.core.instr.Instrumenter.instrument(Instrumenter.java:77)
-	at org.jacoco.agent.rt.internal_4742761.core.instr.Instrumenter.instrument(Instrumenter.java:109)
-	... 39 more
 Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
 java.lang.instrument.IllegalClassFormatException: Error while instrumenting com/sun/tools/attach/VirtualMachine with JaCoCo 0.8.11.202310140853/f33756c.
 	at org.jacoco.agent.rt.internal_4742761.CoverageTransformer.transform(CoverageTransformer.java:94)
@@ -2641,12 +2641,13 @@ Caused by: java.lang.IllegalArgumentException: Unsupported class file major vers
 	... 134 more
 ]]></system-err>
   </testcase>
-  <testcase name="debe_devolver_400_si_la_descripcion_es_corta" classname="com.mgcss.web.SolicitudControllerTest" time="0.21"/>
-  <testcase name="debe_reabrir_solicitud_y_devolver_200" classname="com.mgcss.web.SolicitudControllerTest" time="0.036"/>
-  <testcase name="debe_asignar_tecnico_y_devolver_200" classname="com.mgcss.web.SolicitudControllerTest" time="0.022"/>
-  <testcase name="debe_crear_solicitud_y_devolver_200_ok" classname="com.mgcss.web.SolicitudControllerTest" time="0.212"/>
-  <testcase name="debe_devolver_400_al_cerrar_solicitud_en_estado_incorrecto" classname="com.mgcss.web.SolicitudControllerTest" time="0.021"/>
-  <testcase name="debe_devolver_404_si_solicitud_no_existe" classname="com.mgcss.web.SolicitudControllerTest" time="0.02"/>
-  <testcase name="debe_listar_todas_las_solicitudes" classname="com.mgcss.web.SolicitudControllerTest" time="0.079"/>
-  <testcase name="debe_consultar_solicitud_por_id_y_devolver_200" classname="com.mgcss.web.SolicitudControllerTest" time="0.02"/>
+  <testcase name="debe_devolver_400_si_la_descripcion_es_corta" classname="com.mgcss.web.SolicitudControllerTest" time="0.143"/>
+  <testcase name="debe_reabrir_solicitud_y_devolver_200" classname="com.mgcss.web.SolicitudControllerTest" time="0.013"/>
+  <testcase name="debe_asignar_tecnico_y_devolver_200" classname="com.mgcss.web.SolicitudControllerTest" time="0.013"/>
+  <testcase name="debe_crear_solicitud_y_devolver_200_ok" classname="com.mgcss.web.SolicitudControllerTest" time="0.179"/>
+  <testcase name="debe_incluir_tecnico_id_en_respuesta_cuando_tiene_tecnico_asignado" classname="com.mgcss.web.SolicitudControllerTest" time="0.317"/>
+  <testcase name="debe_devolver_400_al_cerrar_solicitud_en_estado_incorrecto" classname="com.mgcss.web.SolicitudControllerTest" time="0.013"/>
+  <testcase name="debe_devolver_404_si_solicitud_no_existe" classname="com.mgcss.web.SolicitudControllerTest" time="0.017"/>
+  <testcase name="debe_listar_todas_las_solicitudes" classname="com.mgcss.web.SolicitudControllerTest" time="0.052"/>
+  <testcase name="debe_consultar_solicitud_por_id_y_devolver_200" classname="com.mgcss.web.SolicitudControllerTest" time="0.017"/>
 </testsuite>

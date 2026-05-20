@@ -26,8 +26,9 @@ public class SolicitudResponseDTO {
     @Schema(description = "Historial de transiciones de estado")
     private List<String> historial;
 
-    // Constructor vacío requerido por Jackson para deserialización
-    public SolicitudResponseDTO() {}
+    public SolicitudResponseDTO() {
+        // Constructor vacío requerido por Jackson para deserialización
+    }
 
     // Getters y Setters
     public Long getId() { return id; }

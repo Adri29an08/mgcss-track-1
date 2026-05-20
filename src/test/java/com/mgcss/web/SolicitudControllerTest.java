@@ -1,7 +1,7 @@
 package com.mgcss.web;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -16,7 +16,9 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.mgcss.api.SolicitudController;
+import com.mgcss.domain.EstadoSolicitud;
 import com.mgcss.domain.Solicitud;
+import com.mgcss.domain.Tecnico;
 import com.mgcss.service.SolicitudService;
 
 @WebMvcTest(SolicitudController.class)
@@ -115,5 +117,24 @@ class SolicitudControllerTest {
 
         mockMvc.perform(patch("/api/solicitudes/1/asignar-tecnico/5"))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    void debe_incluir_tecnico_id_en_respuesta_cuando_tiene_tecnico_asignado() throws Exception {
+        Tecnico tecnico = mock(Tecnico.class);
+        when(tecnico.getId()).thenReturn(5L);
+
+        Solicitud s = mock(Solicitud.class);
+        when(s.getEstado()).thenReturn(EstadoSolicitud.EN_PROCESO);
+        when(s.getDescripcion()).thenReturn("Incidencia con técnico asignado correctamente");
+        when(s.getFechaCreacion()).thenReturn(null);
+        when(s.getHistorial()).thenReturn(List.of());
+        when(s.getTecnico()).thenReturn(tecnico);
+
+        when(solicitudService.buscarPorId(1L)).thenReturn(s);
+
+        mockMvc.perform(get("/api/solicitudes/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.tecnicoId").value(5));
     }
 }

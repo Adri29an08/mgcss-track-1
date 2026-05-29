@@ -27,11 +27,13 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      # 2. Compilar proyecto y  generar artefacto
-      - name: Compilar y generar artefacto
-        run: mvn clean package
+      # 2. Compilar, testear y verificar Quality Gate (FASE 5)
+      - name: Compilar, testear y analizar calidad (SonarCloud)
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Adri29an08_mgcss-track-1
 
-      # 4. Construir imagen Docker
+      # 3. Construir imagen Docker
       - name: Construir imagen Docker
         run: docker build -t mgcss-track:${{ github.ref_name }} .
 

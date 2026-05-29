@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.mgcss.domain.EstadoTecnico;
 import com.mgcss.domain.Solicitud;
 import com.mgcss.domain.SolicitudRepository;
 import com.mgcss.domain.Tecnico;
@@ -50,6 +51,22 @@ public class SolicitudService {
     public Solicitud cerrarSolicitud(Long id) {
         Solicitud s = buscarPorId(id);
         s.cerrar(); // Delegamos lógica al dominio 
+        return solicitudRepo.save(s);
+    }
+
+    public List<Tecnico> listarTecnicos() {
+        return tecnicoRepo.findAll();
+    }
+
+    @Transactional
+    public Tecnico crearTecnico(String nombre) {
+        return tecnicoRepo.save(new Tecnico(null, nombre, EstadoTecnico.ACTIVO));
+    }
+
+    @Transactional
+    public Solicitud iniciarTrabajo(Long id) {
+        Solicitud s = buscarPorId(id);
+        s.iniciarTrabajo();
         return solicitudRepo.save(s);
     }
 

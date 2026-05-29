@@ -1,5 +1,7 @@
 package com.mgcss.web;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mgcss.domain.EstadoSolicitud;
+import com.mgcss.domain.Solicitud;
 import com.mgcss.service.SolicitudService;
 
 @Controller
@@ -22,13 +26,34 @@ public class SolicitudWebController {
 
     @GetMapping
     public String listar(Model model) {
-        model.addAttribute("solicitudes", solicitudService.listarTodas());
+        List<Solicitud> solicitudes = solicitudService.listarTodas();
+        model.addAttribute("solicitudes", solicitudes);
+        model.addAttribute("tecnicos", solicitudService.listarTecnicos());
+        model.addAttribute("totalAbiertas",
+                solicitudes.stream().filter(s -> s.getEstado() == EstadoSolicitud.ABIERTA).count());
+        model.addAttribute("totalEnProceso",
+                solicitudes.stream().filter(s -> s.getEstado() == EstadoSolicitud.EN_PROCESO).count());
+        model.addAttribute("totalCerradas",
+                solicitudes.stream().filter(s -> s.getEstado() == EstadoSolicitud.CERRADA).count());
         return "solicitudes";
     }
 
     @PostMapping("/nueva")
     public String crear(@RequestParam String descripcion) {
         solicitudService.crearSolicitud(descripcion);
+        return "redirect:/solicitudes";
+    }
+
+    @PostMapping("/tecnicos/nuevo")
+    public String crearTecnico(@RequestParam String nombre) {
+        solicitudService.crearTecnico(nombre);
+        return "redirect:/solicitudes";
+    }
+
+    @PostMapping("/{id}/iniciar")
+    public String iniciar(@PathVariable Long id, @RequestParam Long tecnicoId) {
+        solicitudService.asignarTecnico(id, tecnicoId);
+        solicitudService.iniciarTrabajo(id);
         return "redirect:/solicitudes";
     }
 

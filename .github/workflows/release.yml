@@ -35,12 +35,12 @@ jobs:
       - name: Construir imagen Docker
         run: docker build -t mgcss-track:${{ github.ref_name }} .
 
-      # 5. Publicar Release en GitHub 
-      
+      # 5. Publicar Release en GitHub
       - name: Publicar Release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: target/*.jar
-          generate_release_notes: true
+        run: |
+          gh release create ${{ github.ref_name }} \
+            target/*.jar \
+            --generate-notes \
+            --title "${{ github.ref_name }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

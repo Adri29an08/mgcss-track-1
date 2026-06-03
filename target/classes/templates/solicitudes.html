@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MGCSS Track — Gestión de Solicitudes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body { background-color: #f0f2f5; }
+        .navbar-brand span { font-weight: 300; opacity: 0.8; }
+        .stat-card { border: none; border-radius: 12px; transition: transform 0.2s; }
+        .stat-card:hover { transform: translateY(-3px); }
+        .stat-number { font-size: 2.5rem; font-weight: 700; }
+        .table-card { border: none; border-radius: 12px; overflow: hidden; }
+        .form-card { border: none; border-radius: 12px; }
+        tr.fila-abierta { background-color: #e8f0fe !important; }
+        tr.fila-proceso { background-color: #fff8e1 !important; }
+        tr.fila-cerrada { background-color: #e8f5e9 !important; }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark shadow-sm mb-4">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="/solicitudes">
+            <i class="bi bi-pc-display-horizontal fs-4"></i>
+            <span class="fw-bold">MGCSS Track</span>
+            <span>· Gestión de Solicitudes</span>
+        </a>
+        <a href="/swagger-ui.html" class="btn btn-outline-light btn-sm" target="_blank">
+            <i class="bi bi-code-slash me-1"></i>API Docs
+        </a>
+    </div>
+</nav>
+
+<div class="container pb-5">
+
+    <!-- Tarjetas de resumen -->
+    <div class="row g-3 mb-4">
+        <div class="col-md-4">
+            <div class="card stat-card shadow-sm text-white" style="background: linear-gradient(135deg, #1a73e8, #0d47a1);">
+                <div class="card-body d-flex align-items-center gap-3 p-4">
+                    <i class="bi bi-folder2-open fs-1 opacity-75"></i>
+                    <div>
+                        <div class="stat-number" th:text="${totalAbiertas}">0</div>
+                        <div class="text-uppercase fw-semibold opacity-75" style="font-size:0.8rem">Abiertas</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card stat-card shadow-sm text-dark" style="background: linear-gradient(135deg, #fdd835, #f9a825);">
+                <div class="card-body d-flex align-items-center gap-3 p-4">
+                    <i class="bi bi-tools fs-1 opacity-75"></i>
+                    <div>
+                        <div class="stat-number" th:text="${totalEnProceso}">0</div>
+                        <div class="text-uppercase fw-semibold opacity-75" style="font-size:0.8rem">En Proceso</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card stat-card shadow-sm text-white" style="background: linear-gradient(135deg, #2e7d32, #1b5e20);">
+                <div class="card-body d-flex align-items-center gap-3 p-4">
+                    <i class="bi bi-check2-circle fs-1 opacity-75"></i>
+                    <div>
+                        <div class="stat-number" th:text="${totalCerradas}">0</div>
+                        <div class="text-uppercase fw-semibold opacity-75" style="font-size:0.8rem">Cerradas</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formulario nueva solicitud -->
+    <div class="card form-card shadow-sm mb-4">
+        <div class="card-header bg-white fw-bold border-0 pt-3">
+            <i class="bi bi-plus-circle me-2 text-primary"></i>Nueva Solicitud
+        </div>
+        <div class="card-body">
+            <form th:action="@{/solicitudes/nueva}" method="post">
+                <div class="input-group">
+                    <input type="text" name="descripcion" class="form-control form-control-lg"
+                           placeholder="Descripción de la incidencia (mínimo 10 caracteres)..."
+                           required minlength="10">
+                    <button type="submit" class="btn btn-primary btn-lg px-4">
+                        <i class="bi bi-send me-1"></i>Crear
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Tabla de solicitudes -->
+    <div class="card table-card shadow-sm mb-4">
+        <div class="card-header bg-white fw-bold border-0 pt-3">
+            <i class="bi bi-list-ul me-2 text-primary"></i>Listado de Solicitudes
+        </div>
+        <div class="card-body p-0">
+            <table class="table table-hover mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th style="width:60px">ID</th>
+                        <th>Descripción</th>
+                        <th style="width:130px">Estado</th>
+                        <th style="width:160px">Fecha Creación</th>
+                        <th style="width:280px">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:if="${#lists.isEmpty(solicitudes)}">
+                        <td colspan="5" class="text-center text-muted py-4">
+                            <i class="bi bi-inbox fs-3 d-block mb-2"></i>
+                            No hay solicitudes registradas todavía.
+                        </td>
+                    </tr>
+                    <tr th:each="s : ${solicitudes}"
+                        th:classappend="${s.estado.name() == 'ABIERTA'} ? 'fila-abierta' : (${s.estado.name() == 'EN_PROCESO'} ? 'fila-proceso' : 'fila-cerrada')">
+                        <td class="fw-bold text-muted" th:text="${s.id}"></td>
+                        <td th:text="${s.descripcion}"></td>
+                        <td>
+                            <span class="badge rounded-pill px-3 py-2"
+                                  th:text="${s.estado}"
+                                  th:classappend="${s.estado.name() == 'ABIERTA'} ? 'bg-primary' : (${s.estado.name() == 'EN_PROCESO'} ? 'bg-warning text-dark' : 'bg-success')">
+                            </span>
+                        </td>
+                        <td class="text-muted small"
+                            th:text="${s.fechaCreacion != null ? #temporals.format(s.fechaCreacion, 'dd/MM/yyyy HH:mm') : '-'}">
+                        </td>
+                        <td>
+                            <!-- Botón Iniciar con selector de técnico (solo si ABIERTA) -->
+                            <form th:if="${s.estado.name() == 'ABIERTA'}"
+                                  th:action="@{/solicitudes/{id}/iniciar(id=${s.id})}" method="post" class="d-flex gap-1">
+                                <select name="tecnicoId" class="form-select form-select-sm"
+                                        th:disabled="${#lists.isEmpty(tecnicos)}" required>
+                                    <option value="" disabled selected th:if="${#lists.isEmpty(tecnicos)}">Sin técnicos</option>
+                                    <option th:each="t : ${tecnicos}"
+                                            th:value="${t.id}"
+                                            th:text="${t.nombre}">
+                                    </option>
+                                </select>
+                                <button type="submit" class="btn btn-sm btn-primary text-nowrap"
+                                        th:disabled="${#lists.isEmpty(tecnicos)}">
+                                    <i class="bi bi-play"></i> Iniciar
+                                </button>
+                            </form>
+                            <!-- Botón Cerrar (solo si EN_PROCESO) -->
+                            <form th:if="${s.estado.name() == 'EN_PROCESO'}"
+                                  th:action="@{/solicitudes/{id}/cerrar(id=${s.id})}" method="post" class="d-inline">
+                                <button type="submit" class="btn btn-sm btn-outline-danger">
+                                    <i class="bi bi-lock"></i> Cerrar
+                                </button>
+                            </form>
+                            <!-- Botón Reabrir (solo si CERRADA) -->
+                            <form th:if="${s.estado.name() == 'CERRADA'}"
+                                  th:action="@{/solicitudes/{id}/reabrir(id=${s.id})}" method="post" class="d-inline">
+                                <button type="submit" class="btn btn-sm btn-outline-warning">
+                                    <i class="bi bi-arrow-counterclockwise"></i> Reabrir
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Sección de técnicos -->
+    <div class="card form-card shadow-sm">
+        <div class="card-header bg-white fw-bold border-0 pt-3">
+            <i class="bi bi-person-gear me-2 text-secondary"></i>Técnicos
+        </div>
+        <div class="card-body">
+            <!-- Formulario nuevo técnico -->
+            <form th:action="@{/solicitudes/tecnicos/nuevo}" method="post" class="mb-3">
+                <div class="input-group">
+                    <input type="text" name="nombre" class="form-control"
+                           placeholder="Nombre del técnico..." required minlength="2">
+                    <button type="submit" class="btn btn-secondary">
+                        <i class="bi bi-person-plus me-1"></i>Añadir Técnico
+                    </button>
+                </div>
+            </form>
+            <!-- Lista de técnicos -->
+            <div th:if="${#lists.isEmpty(tecnicos)}" class="text-muted small">
+                <i class="bi bi-info-circle me-1"></i>No hay técnicos. Añade uno para poder iniciar solicitudes.
+            </div>
+            <div th:if="${!#lists.isEmpty(tecnicos)}" class="d-flex flex-wrap gap-2">
+                <span th:each="t : ${tecnicos}"
+                      class="badge bg-secondary fs-6 fw-normal px-3 py-2">
+                    <i class="bi bi-person me-1"></i>
+                    <span th:text="${t.nombre}"></span>
+                    <span class="ms-1 opacity-75" th:text="'(ID: ' + ${t.id} + ')'"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -61,4 +61,20 @@ class SolicitudWebControllerTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/solicitudes"));
     }
+
+    @Test
+    void debe_crear_tecnico_y_redirigir() throws Exception {
+        mockMvc.perform(post("/solicitudes/tecnicos/nuevo")
+                .param("nombre", "Juan García"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/solicitudes"));
+    }
+
+    @Test
+    void debe_iniciar_solicitud_con_tecnico_y_redirigir() throws Exception {
+        mockMvc.perform(post("/solicitudes/1/iniciar")
+                .param("tecnicoId", "1"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/solicitudes"));
+    }
 }

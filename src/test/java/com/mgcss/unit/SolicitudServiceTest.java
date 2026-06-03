@@ -1,8 +1,10 @@
 package com.mgcss.unit;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -12,6 +14,7 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.mgcss.domain.EstadoSolicitud;
 import com.mgcss.domain.EstadoTecnico;
 import com.mgcss.domain.Solicitud;
 import com.mgcss.domain.SolicitudRepository;
@@ -59,8 +62,57 @@ class SolicitudServiceTest {
         assertThrows(IllegalArgumentException.class, () -> {
             service.asignarTecnico(1L, 10L);
         });
-        
+
         // Verificar que NUNCA se intentó guardar nada si falló antes [cite: 305, 336]
         verify(repoS, never()).save(any());
+    }
+
+    @Test
+    void debeListarTecnicos() {
+        SolicitudRepository repoS = mock(SolicitudRepository.class);
+        TecnicoRepository repoT = mock(TecnicoRepository.class);
+        SolicitudService service = new SolicitudService(repoS, repoT);
+
+        Tecnico t = new Tecnico(null, "Ana López", EstadoTecnico.ACTIVO);
+        when(repoT.findAll()).thenReturn(List.of(t));
+
+        List<Tecnico> resultado = service.listarTecnicos();
+
+        assertEquals(1, resultado.size());
+        assertEquals("Ana López", resultado.get(0).getNombre());
+    }
+
+    @Test
+    void debeCrearTecnico() {
+        SolicitudRepository repoS = mock(SolicitudRepository.class);
+        TecnicoRepository repoT = mock(TecnicoRepository.class);
+        SolicitudService service = new SolicitudService(repoS, repoT);
+
+        Tecnico tecnicoGuardado = new Tecnico(1L, "Carlos Ruiz", EstadoTecnico.ACTIVO);
+        when(repoT.save(any())).thenReturn(tecnicoGuardado);
+
+        Tecnico resultado = service.crearTecnico("Carlos Ruiz");
+
+        assertNotNull(resultado);
+        assertEquals("Carlos Ruiz", resultado.getNombre());
+        verify(repoT).save(any());
+    }
+
+    @Test
+    void debeIniciarTrabajoEnSolicitud() {
+        SolicitudRepository repoS = mock(SolicitudRepository.class);
+        TecnicoRepository repoT = mock(TecnicoRepository.class);
+        SolicitudService service = new SolicitudService(repoS, repoT);
+
+        Solicitud s = new Solicitud("Incidencia para iniciar trabajo");
+        Tecnico t = new Tecnico(EstadoTecnico.ACTIVO);
+        s.asignarTecnico(t);
+        when(repoS.findById(1L)).thenReturn(Optional.of(s));
+        when(repoS.save(any())).thenReturn(s);
+
+        service.iniciarTrabajo(1L);
+
+        assertEquals(EstadoSolicitud.EN_PROCESO, s.getEstado());
+        verify(repoS).save(s);
     }
 }

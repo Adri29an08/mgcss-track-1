@@ -1,15 +1,16 @@
 package com.mgcss.unit;
+
+import java.lang.reflect.Field;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-
-import java.time.LocalDateTime;
-import java.lang.reflect.Field;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import com.mgcss.domain.EstadoSolicitud;
 import com.mgcss.domain.EstadoTecnico;
@@ -22,7 +23,6 @@ class SolicitudTest {
     @Test
     void no_debe_permitir_cerrar_si_no_esta_en_proceso() {
         Solicitud s = new Solicitud("Reparación de switch principal");
-        // Está ABIERTA, debe fallar al intentar cerrar
         assertThrows(IllegalStateException.class, s::cerrar);
     }
 
@@ -50,7 +50,6 @@ class SolicitudTest {
 
     @Test
     void no_debe_permitir_descripcion_demasiado_corta() {
-        // Regla de integridad de datos 
         assertThrows(IllegalArgumentException.class, () -> new Solicitud("Corta"));
     }
 
@@ -60,14 +59,13 @@ class SolicitudTest {
         Solicitud s = new Solicitud("Reparación de terminal punto de venta");
         
         s.asignarTecnico(new Tecnico(EstadoTecnico.ACTIVO));
-        s.iniciarTrabajo(); // Estado: EN_PROCESO
-        s.cerrar();         // Estado: CERRADA
+        s.iniciarTrabajo(); 
+        s.cerrar(); 
         
         s.reabrir();
 
         assertEquals(EstadoSolicitud.EN_PROCESO, s.getEstado(), "La solicitud debería estar otra vez EN_PROCESO");
         
-        // Verificar Historial 
         List<String> historial = s.getHistorial();
         assertTrue(historial.size() >= 4, "El historial debería tener registrados todos los pasos");
         assertTrue(historial.get(historial.size() - 1).contains("EN_PROCESO"), "El último cambio debe ser la reapertura");
@@ -89,7 +87,7 @@ class SolicitudTest {
     void debe_incumplir_sla_cuando_pasan_4_dias_abierta() throws Exception {
         Solicitud s = new Solicitud("Descripción válida de prueba");
         
-        cambiarFechaPrivada(s, "fechaCreacion", LocalDateTime.now().minusDays(4));
+        cambiarFechaPrivada(s, "fechaCreacion", LocalDateTime.of(2024, 1, 1, 10, 0));
         
         assertTrue(s.isSlaIncumplido(), "Debería romper el SLA si lleva 4 días abierta");
     }
@@ -98,13 +96,13 @@ class SolicitudTest {
     void debe_cumplir_sla_cuando_se_cierra_en_2_dias() throws Exception {
         Solicitud s = new Solicitud("Descripción válida de prueba");
         
-        cambiarFechaPrivada(s, "fechaCreacion", LocalDateTime.now().minusDays(5));
+        cambiarFechaPrivada(s, "fechaCreacion", LocalDateTime.of(2024, 1, 1, 10, 0));
         
         s.asignarTecnico(new Tecnico(EstadoTecnico.ACTIVO));
         s.iniciarTrabajo();
         s.cerrar();
         
-        cambiarFechaPrivada(s, "fechaCierre", LocalDateTime.now().minusDays(4));
+        cambiarFechaPrivada(s, "fechaCierre", LocalDateTime.of(2024, 1, 3, 10, 0));
         
         assertFalse(s.isSlaIncumplido(), "No rompe el SLA porque se resolvió en 1 día");
     }
@@ -113,13 +111,13 @@ class SolicitudTest {
     void debe_incumplir_sla_cuando_se_cierra_tarde() throws Exception {
         Solicitud s = new Solicitud("Descripción válida de prueba");
         
-        cambiarFechaPrivada(s, "fechaCreacion", LocalDateTime.now().minusDays(10));
+        cambiarFechaPrivada(s, "fechaCreacion", LocalDateTime.of(2024, 1, 1, 10, 0));
         
         s.asignarTecnico(new Tecnico(EstadoTecnico.ACTIVO));
         s.iniciarTrabajo();
         s.cerrar();
         
-        cambiarFechaPrivada(s, "fechaCierre", LocalDateTime.now().minusDays(1));
+        cambiarFechaPrivada(s, "fechaCierre", LocalDateTime.of(2024, 1, 10, 10, 0));
         
         assertTrue(s.isSlaIncumplido(), "Rompe el SLA porque tardaron 9 días en cerrarla");
     }

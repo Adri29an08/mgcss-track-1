@@ -125,6 +125,9 @@
                                   th:text="${s.estado}"
                                   th:classappend="${s.estado.name() == 'ABIERTA'} ? 'bg-primary' : (${s.estado.name() == 'EN_PROCESO'} ? 'bg-warning text-dark' : 'bg-success')">
                             </span>
+                            <span th:if="${s.slaIncumplido}" class="badge bg-danger mt-1 d-block" style="width: fit-content;">
+                                <i class="bi bi-exclamation-triangle"></i> SLA Roto
+                            </span>
                         </td>
                         <td class="text-muted small"
                             th:text="${s.fechaCreacion != null ? #temporals.format(s.fechaCreacion, 'dd/MM/yyyy HH:mm') : '-'}">

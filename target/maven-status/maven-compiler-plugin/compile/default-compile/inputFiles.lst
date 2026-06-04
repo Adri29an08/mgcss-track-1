@@ -1,13 +1,13 @@
-C:\Users\jaime\OneDrive\4º (segundo cuatri)\Mantenimiento\mgcss-track\mgcss-track-1\src\main\java\com\mgcss\api\dto\SolicitudRequestDTO.java
-C:\Users\jaime\OneDrive\4º (segundo cuatri)\Mantenimiento\mgcss-track\mgcss-track-1\src\main\java\com\mgcss\api\dto\SolicitudResponseDTO.java
-C:\Users\jaime\OneDrive\4º (segundo cuatri)\Mantenimiento\mgcss-track\mgcss-track-1\src\main\java\com\mgcss\api\SolicitudController.java
-C:\Users\jaime\OneDrive\4º (segundo cuatri)\Mantenimiento\mgcss-track\mgcss-track-1\src\main\java\com\mgcss\domain\EstadoSolicitud.java
-C:\Users\jaime\OneDrive\4º (segundo cuatri)\Mantenimiento\mgcss-track\mgcss-track-1\src\main\java\com\mgcss\domain\EstadoTecnico.java
-C:\Users\jaime\OneDrive\4º (segundo cuatri)\Mantenimiento\mgcss-track\mgcss-track-1\src\main\java\com\mgcss\domain\Solicitud.java
-C:\Users\jaime\OneDrive\4º (segundo cuatri)\Mantenimiento\mgcss-track\mgcss-track-1\src\main\java\com\mgcss\domain\SolicitudRepository.java
-C:\Users\jaime\OneDrive\4º (segundo cuatri)\Mantenimiento\mgcss-track\mgcss-track-1\src\main\java\com\mgcss\domain\Tecnico.java
-C:\Users\jaime\OneDrive\4º (segundo cuatri)\Mantenimiento\mgcss-track\mgcss-track-1\src\main\java\com\mgcss\domain\TecnicoRepository.java
-C:\Users\jaime\OneDrive\4º (segundo cuatri)\Mantenimiento\mgcss-track\mgcss-track-1\src\main\java\com\mgcss\infrastructure\JpaSolicitudRepository.java
-C:\Users\jaime\OneDrive\4º (segundo cuatri)\Mantenimiento\mgcss-track\mgcss-track-1\src\main\java\com\mgcss\MgcssTrackApplication.java
-C:\Users\jaime\OneDrive\4º (segundo cuatri)\Mantenimiento\mgcss-track\mgcss-track-1\src\main\java\com\mgcss\service\SolicitudService.java
-C:\Users\jaime\OneDrive\4º (segundo cuatri)\Mantenimiento\mgcss-track\mgcss-track-1\src\main\java\com\mgcss\web\SolicitudWebController.java
+e:\repositorio_mantenimiento\mgcss-track-1\src\main\java\com\mgcss\api\dto\SolicitudRequestDTO.java
+e:\repositorio_mantenimiento\mgcss-track-1\src\main\java\com\mgcss\api\dto\SolicitudResponseDTO.java
+e:\repositorio_mantenimiento\mgcss-track-1\src\main\java\com\mgcss\api\SolicitudController.java
+e:\repositorio_mantenimiento\mgcss-track-1\src\main\java\com\mgcss\domain\EstadoSolicitud.java
+e:\repositorio_mantenimiento\mgcss-track-1\src\main\java\com\mgcss\domain\EstadoTecnico.java
+e:\repositorio_mantenimiento\mgcss-track-1\src\main\java\com\mgcss\domain\Solicitud.java
+e:\repositorio_mantenimiento\mgcss-track-1\src\main\java\com\mgcss\domain\SolicitudRepository.java
+e:\repositorio_mantenimiento\mgcss-track-1\src\main\java\com\mgcss\domain\Tecnico.java
+e:\repositorio_mantenimiento\mgcss-track-1\src\main\java\com\mgcss\domain\TecnicoRepository.java
+e:\repositorio_mantenimiento\mgcss-track-1\src\main\java\com\mgcss\infrastructure\JpaSolicitudRepository.java
+e:\repositorio_mantenimiento\mgcss-track-1\src\main\java\com\mgcss\MgcssTrackApplication.java
+e:\repositorio_mantenimiento\mgcss-track-1\src\main\java\com\mgcss\service\SolicitudService.java
+e:\repositorio_mantenimiento\mgcss-track-1\src\main\java\com\mgcss\web\SolicitudWebController.java

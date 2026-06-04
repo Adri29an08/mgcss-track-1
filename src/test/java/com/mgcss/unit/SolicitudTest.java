@@ -2,6 +2,7 @@ package com.mgcss.unit;
 
 import java.lang.reflect.Field;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -87,7 +88,7 @@ class SolicitudTest {
     void debe_incumplir_sla_cuando_pasan_4_dias_abierta() throws Exception {
         Solicitud s = new Solicitud("Descripción válida de prueba");
         
-        cambiarFechaPrivada(s, "fechaCreacion", LocalDateTime.of(2024, 1, 1, 10, 0));
+        cambiarFechaPrivada(s, "fechaCreacion", LocalDateTime.of(2024, Month.JANUARY, 1, 10, 0));
         
         assertTrue(s.isSlaIncumplido(), "Debería romper el SLA si lleva 4 días abierta");
     }
@@ -96,13 +97,13 @@ class SolicitudTest {
     void debe_cumplir_sla_cuando_se_cierra_en_2_dias() throws Exception {
         Solicitud s = new Solicitud("Descripción válida de prueba");
         
-        cambiarFechaPrivada(s, "fechaCreacion", LocalDateTime.of(2024, 1, 1, 10, 0));
+        cambiarFechaPrivada(s, "fechaCreacion", LocalDateTime.of(2024, Month.JANUARY, 1, 10, 0));
         
         s.asignarTecnico(new Tecnico(EstadoTecnico.ACTIVO));
         s.iniciarTrabajo();
         s.cerrar();
         
-        cambiarFechaPrivada(s, "fechaCierre", LocalDateTime.of(2024, 1, 3, 10, 0));
+        cambiarFechaPrivada(s, "fechaCierre", LocalDateTime.of(2024, Month.JANUARY, 3, 10, 0));
         
         assertFalse(s.isSlaIncumplido(), "No rompe el SLA porque se resolvió en 1 día");
     }
@@ -111,13 +112,13 @@ class SolicitudTest {
     void debe_incumplir_sla_cuando_se_cierra_tarde() throws Exception {
         Solicitud s = new Solicitud("Descripción válida de prueba");
         
-        cambiarFechaPrivada(s, "fechaCreacion", LocalDateTime.of(2024, 1, 1, 10, 0));
+        cambiarFechaPrivada(s, "fechaCreacion", LocalDateTime.of(2024, Month.JANUARY, 1, 10, 0));
         
         s.asignarTecnico(new Tecnico(EstadoTecnico.ACTIVO));
         s.iniciarTrabajo();
         s.cerrar();
         
-        cambiarFechaPrivada(s, "fechaCierre", LocalDateTime.of(2024, 1, 10, 10, 0));
+        cambiarFechaPrivada(s, "fechaCierre", LocalDateTime.of(2024, Month.JANUARY, 10, 10, 0));
         
         assertTrue(s.isSlaIncumplido(), "Rompe el SLA porque tardaron 9 días en cerrarla");
     }

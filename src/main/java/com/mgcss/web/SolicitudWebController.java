@@ -46,7 +46,6 @@ public class SolicitudWebController {
 
     @PostMapping("/tecnicos/nuevo")
     public String crearTecnico(@RequestParam String nombre) {
-        System.out.println("LLEGÓ EL TÉCNICO DESDE LA WEB: " + nombre); // para ver si llega el nombre del técnico
         solicitudService.crearTecnico(nombre);
         return "redirect:/solicitudes";
     }

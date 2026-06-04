@@ -127,7 +127,11 @@ public class Solicitud {
             ? this.fechaCierre 
             : LocalDateTime.now();
 
-        long diasTranscurridos = java.time.temporal.ChronoUnit.DAYS.between(this.fechaCreacion, fechaReferencia);
+        //añadimos la zona horaria del sistema para evitar problemas con la conversión de fechas
+        long diasTranscurridos = java.time.temporal.ChronoUnit.DAYS.between(
+            this.fechaCreacion.atZone(java.time.ZoneId.systemDefault()), 
+            fechaReferencia.atZone(java.time.ZoneId.systemDefault())
+        );
         
         return diasTranscurridos > 3; // Límite de 3 días de SLA
     }

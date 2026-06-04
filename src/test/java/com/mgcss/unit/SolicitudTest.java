@@ -1,9 +1,15 @@
 package com.mgcss.unit;
+
+import java.lang.reflect.Field;
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +24,6 @@ class SolicitudTest {
     @Test
     void no_debe_permitir_cerrar_si_no_esta_en_proceso() {
         Solicitud s = new Solicitud("Reparación de switch principal");
-        // Está ABIERTA, debe fallar al intentar cerrar
         assertThrows(IllegalStateException.class, s::cerrar);
     }
 
@@ -35,43 +40,86 @@ class SolicitudTest {
     void no_debe_asignar_tecnico_inactivo() {
         Solicitud s = new Solicitud("Revisión de firewall perimetral");
         Tecnico inactivo = new Tecnico(EstadoTecnico.INACTIVO);
-        // Debe fallar según la regla de negocio
         assertThrows(IllegalStateException.class, () -> s.asignarTecnico(inactivo));
     }
 
     @Test
     void no_debe_iniciar_trabajo_sin_tecnico() {
         Solicitud s = new Solicitud("Configuración de VLAN interna");
-        // Falla porque técnico es null 
         assertThrows(IllegalStateException.class, s::iniciarTrabajo);
     }
 
     @Test
     void no_debe_permitir_descripcion_demasiado_corta() {
-        // Regla de integridad de datos 
         assertThrows(IllegalArgumentException.class, () -> new Solicitud("Corta"));
     }
 
     @Test
     @Tag("unit")
     void debe_permitir_reapertura_y_registrar_historial_completo() {
-        // 1. Crear (Estado: ABIERTA)
         Solicitud s = new Solicitud("Reparación de terminal punto de venta");
         
-        // 2. Transiciones
         s.asignarTecnico(new Tecnico(EstadoTecnico.ACTIVO));
-        s.iniciarTrabajo(); // Estado: EN_PROCESO
-        s.cerrar();         // Estado: CERRADA
+        s.iniciarTrabajo(); 
+        s.cerrar(); 
         
-        // 3. El cambio de la Sesión 9: Reabrir
         s.reabrir();
-        
-        // Verificaciones
+
         assertEquals(EstadoSolicitud.EN_PROCESO, s.getEstado(), "La solicitud debería estar otra vez EN_PROCESO");
         
-        // Verificar Historial (debe tener al menos 5 entradas: Creada, Asignada, Iniciada, Cerrada, Reabierta)
         List<String> historial = s.getHistorial();
         assertTrue(historial.size() >= 4, "El historial debería tener registrados todos los pasos");
         assertTrue(historial.get(historial.size() - 1).contains("EN_PROCESO"), "El último cambio debe ser la reapertura");
+    }
+
+    private void cambiarFechaPrivada(Solicitud s, String nombreCampo, LocalDateTime nuevaFecha) throws Exception {
+        Field campo = Solicitud.class.getDeclaredField(nombreCampo);
+        campo.setAccessible(true);
+        campo.set(s, nuevaFecha);
+    }
+
+    @Test
+    void debe_cumplir_sla_cuando_es_nueva() {
+        Solicitud s = new Solicitud("Descripción válida de prueba");
+        assertFalse(s.isSlaIncumplido(), "Una solicitud recién creada no debería romper el SLA");
+    }
+
+    @Test
+    void debe_incumplir_sla_cuando_pasan_4_dias_abierta() throws Exception {
+        Solicitud s = new Solicitud("Descripción válida de prueba");
+        
+        cambiarFechaPrivada(s, "fechaCreacion", LocalDateTime.of(2024, Month.JANUARY, 1, 10, 0));
+        
+        assertTrue(s.isSlaIncumplido(), "Debería romper el SLA si lleva 4 días abierta");
+    }
+
+    @Test
+    void debe_cumplir_sla_cuando_se_cierra_en_2_dias() throws Exception {
+        Solicitud s = new Solicitud("Descripción válida de prueba");
+        
+        cambiarFechaPrivada(s, "fechaCreacion", LocalDateTime.of(2024, Month.JANUARY, 1, 10, 0));
+        
+        s.asignarTecnico(new Tecnico(EstadoTecnico.ACTIVO));
+        s.iniciarTrabajo();
+        s.cerrar();
+        
+        cambiarFechaPrivada(s, "fechaCierre", LocalDateTime.of(2024, Month.JANUARY, 3, 10, 0));
+        
+        assertFalse(s.isSlaIncumplido(), "No rompe el SLA porque se resolvió en 1 día");
+    }
+
+    @Test
+    void debe_incumplir_sla_cuando_se_cierra_tarde() throws Exception {
+        Solicitud s = new Solicitud("Descripción válida de prueba");
+        
+        cambiarFechaPrivada(s, "fechaCreacion", LocalDateTime.of(2024, Month.JANUARY, 1, 10, 0));
+        
+        s.asignarTecnico(new Tecnico(EstadoTecnico.ACTIVO));
+        s.iniciarTrabajo();
+        s.cerrar();
+        
+        cambiarFechaPrivada(s, "fechaCierre", LocalDateTime.of(2024, Month.JANUARY, 10, 10, 0));
+        
+        assertTrue(s.isSlaIncumplido(), "Rompe el SLA porque tardaron 9 días en cerrarla");
     }
 }

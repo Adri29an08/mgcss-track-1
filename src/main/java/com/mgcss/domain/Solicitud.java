@@ -1,6 +1,7 @@
 package com.mgcss.domain;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class Solicitud {
     private EstadoSolicitud estado;
 
     private LocalDateTime fechaCreacion;
+    private LocalDateTime fechaCierre;
 
     @ElementCollection
     @CollectionTable(name = "solicitud_historial", joinColumns = @JoinColumn(name = "solicitud_id"))
@@ -46,11 +48,12 @@ public class Solicitud {
         validarDescripcion(descripcion);
         this.descripcion = descripcion;
         registrarCambioEstado(EstadoSolicitud.ABIERTA);
-        this.fechaCreacion = LocalDateTime.now();
+        this.fechaCreacion = LocalDateTime.now(ZoneId.systemDefault());
     }
 
     public void cerrar() {
         validarEstadoParaCierre();
+        this.fechaCierre = LocalDateTime.now(ZoneId.systemDefault());
         registrarCambioEstado(EstadoSolicitud.CERRADA);
     }
 
@@ -75,7 +78,7 @@ public class Solicitud {
 
     private void registrarCambioEstado(EstadoSolicitud nuevoEstado) {
         this.estado = nuevoEstado;
-        this.historial.add("Estado cambiado a " + nuevoEstado + " el " + LocalDateTime.now());
+        this.historial.add("Estado cambiado a " + nuevoEstado + " el " + LocalDateTime.now(ZoneId.systemDefault()));
     }
 
     // --- MÉTODOS DE VALIDACIÓN (Sesión 8) ---
@@ -118,4 +121,19 @@ public class Solicitud {
     public List<String> getHistorial() { return new ArrayList<>(historial); }
 
     public void setId(Long id) { this.id = id; }
+
+    @jakarta.persistence.Transient
+    public boolean isSlaIncumplido() {
+        LocalDateTime fechaReferencia = (this.estado == EstadoSolicitud.CERRADA && this.fechaCierre != null) 
+            ? this.fechaCierre 
+            : LocalDateTime.now(ZoneId.systemDefault());
+
+        //añadimos la zona horaria del sistema para evitar problemas con la conversión de fechas
+        long diasTranscurridos = java.time.temporal.ChronoUnit.DAYS.between(
+            this.fechaCreacion.atZone(ZoneId.systemDefault()), 
+            fechaReferencia.atZone(ZoneId.systemDefault())
+        );
+        
+        return diasTranscurridos > 3; // Límite de 3 días de SLA
+    }
 }

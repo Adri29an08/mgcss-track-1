@@ -1,6 +1,7 @@
 package com.mgcss.domain;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,12 +48,12 @@ public class Solicitud {
         validarDescripcion(descripcion);
         this.descripcion = descripcion;
         registrarCambioEstado(EstadoSolicitud.ABIERTA);
-        this.fechaCreacion = LocalDateTime.now();
+        this.fechaCreacion = LocalDateTime.now(ZoneId.systemDefault());
     }
 
     public void cerrar() {
         validarEstadoParaCierre();
-        this.fechaCierre = LocalDateTime.now();
+        this.fechaCierre = LocalDateTime.now(ZoneId.systemDefault());
         registrarCambioEstado(EstadoSolicitud.CERRADA);
     }
 
@@ -77,7 +78,7 @@ public class Solicitud {
 
     private void registrarCambioEstado(EstadoSolicitud nuevoEstado) {
         this.estado = nuevoEstado;
-        this.historial.add("Estado cambiado a " + nuevoEstado + " el " + LocalDateTime.now());
+        this.historial.add("Estado cambiado a " + nuevoEstado + " el " + LocalDateTime.now(ZoneId.systemDefault()));
     }
 
     // --- MÉTODOS DE VALIDACIÓN (Sesión 8) ---
@@ -125,12 +126,12 @@ public class Solicitud {
     public boolean isSlaIncumplido() {
         LocalDateTime fechaReferencia = (this.estado == EstadoSolicitud.CERRADA && this.fechaCierre != null) 
             ? this.fechaCierre 
-            : LocalDateTime.now();
+            : LocalDateTime.now(ZoneId.systemDefault());
 
         //añadimos la zona horaria del sistema para evitar problemas con la conversión de fechas
         long diasTranscurridos = java.time.temporal.ChronoUnit.DAYS.between(
-            this.fechaCreacion.atZone(java.time.ZoneId.systemDefault()), 
-            fechaReferencia.atZone(java.time.ZoneId.systemDefault())
+            this.fechaCreacion.atZone(ZoneId.systemDefault()), 
+            fechaReferencia.atZone(ZoneId.systemDefault())
         );
         
         return diasTranscurridos > 3; // Límite de 3 días de SLA
